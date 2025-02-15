@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8kkyd1erbjvi"]
+
+[ext_resource type="Texture2D" uid="uid://do8as0fx6ldcr" path="res://Assets/tiles_floor_1.png" id="1_r150o"]
+[ext_resource type="Texture2D" uid="uid://bdagmuqjvk0kv" path="res://Assets/concrete_6.png" id="2_idj7w"]
+[ext_resource type="PackedScene" uid="uid://6p0gptqf1lg6" path="res://Scenes/PlayerCharacter.tscn" id="3_kln2b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idj7w"]
+albedo_texture = ExtResource("1_r150o")
+uv1_scale = Vector3(24, 24, 24)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kln2b"]
+albedo_texture = ExtResource("2_idj7w")
+uv1_scale = Vector3(-1.47, 5.085, 0.425)
+
+[node name="Main" type="Node3D"]
+
+[node name="CSGFloor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00653076, 0.05, 0.000305176)
+use_collision = true
+size = Vector3(64, 0.1, 64)
+material = SubResource("StandardMaterial3D_idj7w")
+
+[node name="CSGWalls" type="CSGCombiner3D" parent="."]
+transform = Transform3D(-4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, -0.0999985, 8, 32)
+material_override = SubResource("StandardMaterial3D_kln2b")
+use_collision = true
+
+[node name="CSGWall -GlobalX" type="CSGBox3D" parent="CSGWalls"]
+transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -32, 2.38419e-06, 32)
+size = Vector3(0.2, 16, 64)
+
+[node name="CSGWall +GlobalX" type="CSGBox3D" parent="CSGWalls"]
+transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -32, 0, -32)
+size = Vector3(0.2, 16, 64)
+
+[node name="CSGWall -GlobalZ" type="CSGBox3D" parent="CSGWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.64203e-15, 0, -1.64203e-15, 1, -64, 2.38419e-06, 2.80142e-06)
+size = Vector3(0.2, 16, 64)
+
+[node name="CSGWall +GlobalZ" type="CSGBox3D" parent="CSGWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.64203e-15, 0, -1.64203e-15, 1, 0, 0, 0)
+size = Vector3(0.2, 16, 64)
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("3_kln2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 31, 0)

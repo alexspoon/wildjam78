@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://deultft1rbp2m"]
+
+[ext_resource type="Script" uid="uid://c3ks5a58ce81l" path="res://Scripts/PlayerMoveAndLookComponent.cs" id="1_hlt1c"]
+
+[node name="PlayerMoveAndLookComponent" type="Node"]
+script = ExtResource("1_hlt1c")
+Gravity = 9.82
+JumpForce = 10.0
+MoveSpeed = 10.0
+MoveAcceleration = 10.0
+MoveDrag = 10.0
+MouseSensitivity = 0.5

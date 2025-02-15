@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://6p0gptqf1lg6"]
+
+[ext_resource type="PackedScene" uid="uid://deultft1rbp2m" path="res://Scenes/PlayerMoveAndLookComponent.tscn" id="1_5gnj7"]
+[ext_resource type="Texture2D" uid="uid://bqo8cuswwljp5" path="res://Assets/pcb_1.png" id="1_v7sut"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5gnj7"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2getf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdaju"]
+albedo_texture = ExtResource("1_v7sut")
+uv1_scale = Vector3(10, 10, 1)
+
+[node name="PlayerCharacter" type="CharacterBody3D"]
+physics_interpolation_mode = 1
+
+[node name="PlayerMoveAndLookComponent" parent="." instance=ExtResource("1_5gnj7")]
+JumpForce = 7.5
+MoveAcceleration = 100.0
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_5gnj7")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_2getf")
+surface_material_override/0 = SubResource("StandardMaterial3D_mdaju")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="HeadRaycast" type="RayCast3D" parent="Head"]
+
+[node name="Camera" type="Camera3D" parent="Head"]
