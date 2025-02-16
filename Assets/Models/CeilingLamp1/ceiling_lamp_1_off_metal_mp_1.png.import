@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqo8cuswwljp5"
-path.s3tc="res://.godot/imported/pcb_1.png-ef719d0f9b8bdbcc2e3119ea3198001b.s3tc.ctex"
+uid="uid://cw4104mrv1hfe"
+path.s3tc="res://.godot/imported/ceiling_lamp_1_off_metal_mp_1.png-904e6dea0e8b15c9420264ac86ec73bc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "d29d7165265005e3f98a57ec8e515349"
+}
 
 [deps]
 
-source_file="res://Assets/pcb_1.png"
-dest_files=["res://.godot/imported/pcb_1.png-ef719d0f9b8bdbcc2e3119ea3198001b.s3tc.ctex"]
+source_file="res://Assets/Models/CeilingLamp1/ceiling_lamp_1_off_metal_mp_1.png"
+dest_files=["res://.godot/imported/ceiling_lamp_1_off_metal_mp_1.png-904e6dea0e8b15c9420264ac86ec73bc.s3tc.ctex"]
 
 [params]
 

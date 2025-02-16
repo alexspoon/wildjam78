@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://6p0gptqf1lg6"]
+[gd_scene load_steps=10 format=3 uid="uid://6p0gptqf1lg6"]
 
+[ext_resource type="PackedScene" uid="uid://ck8xythvpr3og" path="res://Scenes/PlayerGrabComponent.tscn" id="1_2getf"]
 [ext_resource type="PackedScene" uid="uid://deultft1rbp2m" path="res://Scenes/PlayerMoveAndLookComponent.tscn" id="1_5gnj7"]
-[ext_resource type="Texture2D" uid="uid://bqo8cuswwljp5" path="res://Assets/pcb_1.png" id="1_v7sut"]
+[ext_resource type="Texture2D" uid="uid://bqo8cuswwljp5" path="res://Assets/Textures/pcb_1.png" id="1_v7sut"]
+[ext_resource type="Material" uid="uid://bpt0fsv685nqr" path="res://Assets/Materials/DebugMeshGreen.tres" id="4_mdaju"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5gnj7"]
 
@@ -11,12 +13,27 @@
 albedo_texture = ExtResource("1_v7sut")
 uv1_scale = Vector3(10, 10, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5gnj7"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5gnj7"]
+
 [node name="PlayerCharacter" type="CharacterBody3D"]
 physics_interpolation_mode = 1
 
+[node name="PlayerGrabComponent" parent="." instance=ExtResource("1_2getf")]
+GrabSpeed = 100.0
+
 [node name="PlayerMoveAndLookComponent" parent="." instance=ExtResource("1_5gnj7")]
 JumpForce = 7.5
-MoveAcceleration = 100.0
+DefaultMoveSpeed = 10.0
+DefaultMoveAcceleration = 75.0
+MoveAcceleration = 75.0
+MaxJumps = 1
+DefaultFov = 80.0
+SprintFov = 10.0
+CrouchFov = -10.0
+JumpFov = 2.5
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_5gnj7")
@@ -28,6 +45,18 @@ surface_material_override/0 = SubResource("StandardMaterial3D_mdaju")
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 
+[node name="GrabSpringArm" type="SpringArm3D" parent="Head"]
+shape = SubResource("BoxShape3D_5gnj7")
+spring_length = -2.5
+
+[node name="GrabPoint" type="Node3D" parent="Head/GrabSpringArm"]
+
+[node name="DebugMesh" type="MeshInstance3D" parent="Head/GrabSpringArm/GrabPoint"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_5gnj7")
+surface_material_override/0 = ExtResource("4_mdaju")
+
 [node name="HeadRaycast" type="RayCast3D" parent="Head"]
+target_position = Vector3(0, 0, -2.5)
 
 [node name="Camera" type="Camera3D" parent="Head"]

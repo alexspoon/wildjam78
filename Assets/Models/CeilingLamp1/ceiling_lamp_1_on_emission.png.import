@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do8as0fx6ldcr"
-path.s3tc="res://.godot/imported/tiles_floor_1.png-a6a6304c6b08b23420a7f6c4fbf05a94.s3tc.ctex"
+uid="uid://b3iua4h1prx4o"
+path.s3tc="res://.godot/imported/ceiling_lamp_1_on_emission.png-4afbd8b179e481a4bc5414b8deca5aa5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/tiles_floor_1.png"
-dest_files=["res://.godot/imported/tiles_floor_1.png-a6a6304c6b08b23420a7f6c4fbf05a94.s3tc.ctex"]
+source_file="res://Assets/Models/CeilingLamp1/ceiling_lamp_1_on_emission.png"
+dest_files=["res://.godot/imported/ceiling_lamp_1_on_emission.png-4afbd8b179e481a4bc5414b8deca5aa5.s3tc.ctex"]
 
 [params]
 

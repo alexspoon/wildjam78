@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bofils13jeaso"]
+
+[ext_resource type="PackedScene" uid="uid://n2cv270vd6ad" path="res://Assets/Models/RigidBodyCrate/wooden_crate_2.glb" id="1_xv1il"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5y3kq"]
+size = Vector3(1.08129, 1.06699, 1.07839)
+
+[node name="RigidBody3D" type="RigidBody3D"]
+continuous_cd = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0.00122678, 0.542463, -0.00849611)
+shape = SubResource("BoxShape3D_5y3kq")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.00122678, 0.00849611, 0.00849587)
+size = Vector3(1.08, 1.07, 1.08)
+
+[node name="wooden_crate_22" parent="." instance=ExtResource("1_xv1il")]
+
+[editable path="wooden_crate_22"]

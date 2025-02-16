@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cved1wuq1lhmt"]
+
+[ext_resource type="PackedScene" uid="uid://dqcmbxs5dxx5k" path="res://Assets/Models/CeilingLamp1/ceiling_lamp_1_off.glb" id="1_xj7xp"]
+[ext_resource type="Material" uid="uid://dprnqu8dok7xi" path="res://Assets/Materials/CeilingLampOn.tres" id="2_e3kah"]
+
+[node name="CeilingLamp" instance=ExtResource("1_xj7xp")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ceiling_lamp_1_off" parent="." index="0"]
+surface_material_override/2 = ExtResource("2_e3kah")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.028802, 0)
+light_color = Color(1, 0.934048, 0.713241, 1)
+light_energy = 8.0
+light_indirect_energy = 8.0
+shadow_enabled = true
+spot_range = 32.0
+spot_angle = 85.0
