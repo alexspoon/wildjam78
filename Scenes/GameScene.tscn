@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c51tc2m3fwq4"]
+
+[ext_resource type="PackedScene" uid="uid://6p0gptqf1lg6" path="res://Scenes/PlayerCharacter.tscn" id="1_2wl7v"]
+[ext_resource type="Environment" uid="uid://rny8rgixtqg7" path="res://Assets/Environments/GameSceneEnvironment.tres" id="1_3mbwn"]
+[ext_resource type="PackedScene" uid="uid://deb5ho2jmhvqo" path="res://Scenes/LevelPillar.tscn" id="1_4bvgx"]
+
+[node name="GameScene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_3mbwn")
+
+[node name="Level Geometry" type="Node" parent="."]
+
+[node name="LevelPillar" parent="Level Geometry" instance=ExtResource("1_4bvgx")]
+
+[node name="Level Objects" type="Node" parent="."]
+
+[node name="Level Props" type="Node" parent="."]
+
+[node name="Level Lights" type="Node" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 128, 0)
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("1_2wl7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64, 0)

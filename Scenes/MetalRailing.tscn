@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://co7ssrjqm3gvh"]
+
+[ext_resource type="PackedScene" uid="uid://1eyimsermbf2" path="res://Assets/Models/MetalRailing1/hand_rail_3.glb" id="1_efwpd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s0qag"]
+size = Vector3(2.2, 1.3, 0.1)
+
+[node name="MetalRailing1" instance=ExtResource("1_efwpd")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0.649128, 0)
+shape = SubResource("BoxShape3D_s0qag")

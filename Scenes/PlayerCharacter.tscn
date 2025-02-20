@@ -1,9 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://6p0gptqf1lg6"]
+[gd_scene load_steps=15 format=3 uid="uid://6p0gptqf1lg6"]
 
-[ext_resource type="PackedScene" uid="uid://ck8xythvpr3og" path="res://Scenes/PlayerGrabComponent.tscn" id="1_2getf"]
 [ext_resource type="PackedScene" uid="uid://deultft1rbp2m" path="res://Scenes/PlayerMoveAndLookComponent.tscn" id="1_5gnj7"]
+[ext_resource type="Animation" uid="uid://c1w2jf1a6nguc" path="res://Assets/Animations/BeamSwing.res" id="1_id6tp"]
 [ext_resource type="Texture2D" uid="uid://bqo8cuswwljp5" path="res://Assets/Textures/pcb_1.png" id="1_v7sut"]
 [ext_resource type="Material" uid="uid://bpt0fsv685nqr" path="res://Assets/Materials/DebugMeshGreen.tres" id="4_mdaju"]
+[ext_resource type="Shader" uid="uid://cgkraorjqg7y" path="res://Assets/Shaders/psx_camera_shader.gdshader" id="4_r4x55"]
+
+[sub_resource type="Animation" id="Animation_id6tp"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wnmxb"]
+_data = {
+&"BeamSwing": ExtResource("1_id6tp"),
+&"RESET": SubResource("Animation_id6tp")
+}
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5gnj7"]
 
@@ -18,22 +28,45 @@ size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_5gnj7"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_id6tp"]
+render_priority = -1
+shader = ExtResource("4_r4x55")
+shader_parameter/enable_fog = false
+shader_parameter/fog_color = Color(0, 0, 0, 1)
+shader_parameter/noise_color = Color(0, 0, 0, 1)
+shader_parameter/fog_distance = 100.0
+shader_parameter/fog_fade_range = 50.0
+shader_parameter/enable_noise = false
+shader_parameter/noise_time_fac = 4.0
+shader_parameter/enable_color_limitation = true
+shader_parameter/color_levels = 48
+shader_parameter/enable_dithering = true
+shader_parameter/dither_strength = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_wnmxb"]
+material = SubResource("ShaderMaterial_id6tp")
+flip_faces = true
+size = Vector2(2, 2)
+
 [node name="PlayerCharacter" type="CharacterBody3D"]
 physics_interpolation_mode = 1
 
-[node name="PlayerGrabComponent" parent="." instance=ExtResource("1_2getf")]
-GrabSpeed = 100.0
+[node name="PlayerAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wnmxb")
+}
 
 [node name="PlayerMoveAndLookComponent" parent="." instance=ExtResource("1_5gnj7")]
 JumpForce = 7.5
 DefaultMoveSpeed = 10.0
 DefaultMoveAcceleration = 75.0
 MoveAcceleration = 75.0
-MaxJumps = 1
+MaxJumps = 2
 DefaultFov = 80.0
 SprintFov = 10.0
 CrouchFov = -10.0
 JumpFov = 2.5
+MouseSensitivity = 0.25
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_5gnj7")
@@ -45,6 +78,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_mdaju")
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 
+[node name="PlayerFlashlight" type="SpotLight3D" parent="Head"]
+light_energy = 0.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+spot_range = 10.0
+spot_angle = 30.0
+
 [node name="GrabSpringArm" type="SpringArm3D" parent="Head"]
 shape = SubResource("BoxShape3D_5gnj7")
 spring_length = -2.5
@@ -53,10 +93,17 @@ spring_length = -2.5
 
 [node name="DebugMesh" type="MeshInstance3D" parent="Head/GrabSpringArm/GrabPoint"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+visible = false
 mesh = SubResource("SphereMesh_5gnj7")
 surface_material_override/0 = ExtResource("4_mdaju")
 
-[node name="HeadRaycast" type="RayCast3D" parent="Head"]
+[node name="GrabRaycast" type="RayCast3D" parent="Head"]
 target_position = Vector3(0, 0, -2.5)
+collide_with_areas = true
 
 [node name="Camera" type="Camera3D" parent="Head"]
+
+[node name="PSXShader" type="MeshInstance3D" parent="Head/Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_wnmxb")

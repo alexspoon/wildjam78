@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5h3l2hxvbjh5"
-path.s3tc="res://.godot/imported/wall_5.png-6f89c51aa7b6ae3497205d0373302ed6.s3tc.ctex"
+uid="uid://iyxxxsm03mj2"
+path.s3tc="res://.godot/imported/elevator_sign_1_elevator_sign_1.png-ac2be59a4855142f5e044ed3560e6cc7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "e2a44d5cc896848e312d14b914b3363e"
+}
 
 [deps]
 
-source_file="res://Assets/Textures/wall_5.png"
-dest_files=["res://.godot/imported/wall_5.png-6f89c51aa7b6ae3497205d0373302ed6.s3tc.ctex"]
+source_file="res://Assets/Models/Elevator/ElevatorSign/elevator_sign_1_elevator_sign_1.png"
+dest_files=["res://.godot/imported/elevator_sign_1_elevator_sign_1.png-ac2be59a4855142f5e044ed3560e6cc7.s3tc.ctex"]
 
 [params]
 

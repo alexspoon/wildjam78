@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5h3l2hxvbjh5"
-path.s3tc="res://.godot/imported/wall_5.png-6f89c51aa7b6ae3497205d0373302ed6.s3tc.ctex"
+uid="uid://c1atukxy3u1ok"
+path.s3tc="res://.godot/imported/hand_rail_3_rubber_1.png-3377a85f478cf7c9ca13a495a4f4ec38.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "981043df66e69accd4f7518e1c8c9f2a"
+}
 
 [deps]
 
-source_file="res://Assets/Textures/wall_5.png"
-dest_files=["res://.godot/imported/wall_5.png-6f89c51aa7b6ae3497205d0373302ed6.s3tc.ctex"]
+source_file="res://Assets/Models/MetalRailing1/hand_rail_3_rubber_1.png"
+dest_files=["res://.godot/imported/hand_rail_3_rubber_1.png-3377a85f478cf7c9ca13a495a4f4ec38.s3tc.ctex"]
 
 [params]
 

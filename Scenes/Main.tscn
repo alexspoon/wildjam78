@@ -1,27 +1,73 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8kkyd1erbjvi"]
+[gd_scene load_steps=23 format=3 uid="uid://c8kkyd1erbjvi"]
 
+[ext_resource type="PackedScene" uid="uid://deb5ho2jmhvqo" path="res://Scenes/LevelPillar.tscn" id="1_4kpch"]
 [ext_resource type="Texture2D" uid="uid://do8as0fx6ldcr" path="res://Assets/Textures/tiles_floor_1.png" id="1_r150o"]
-[ext_resource type="Texture2D" uid="uid://bdagmuqjvk0kv" path="res://Assets/Textures/concrete_6.png" id="2_idj7w"]
-[ext_resource type="Texture2D" uid="uid://by04hqwengult" path="res://Assets/Textures/metal_wall_4.png" id="2_rgh2o"]
+[ext_resource type="Script" uid="uid://bqv5dfc2obqou" path="res://Scripts/KillFloorComponent.cs" id="1_rgh2o"]
+[ext_resource type="PackedScene" uid="uid://y40sc0lsqk7x" path="res://Assets/Models/Carpet1/carpet_1.glb" id="3_jw32o"]
 [ext_resource type="PackedScene" uid="uid://6p0gptqf1lg6" path="res://Scenes/PlayerCharacter.tscn" id="3_kln2b"]
-[ext_resource type="PackedScene" uid="uid://cved1wuq1lhmt" path="res://Scenes/CeilingLamp.tscn" id="4_pbw6q"]
-[ext_resource type="PackedScene" uid="uid://bofils13jeaso" path="res://Scenes/rigidbodyCrate1.tscn" id="6_v1gob"]
+[ext_resource type="PackedScene" uid="uid://co7ssrjqm3gvh" path="res://Scenes/MetalRailing.tscn" id="3_v1gob"]
+[ext_resource type="PackedScene" uid="uid://c51tc2m3fwq4" path="res://Scenes/GameScene.tscn" id="3_vy5pj"]
+[ext_resource type="PackedScene" uid="uid://e8tfh3fxwuu1" path="res://Scenes/StartSign.tscn" id="4_pbw6q"]
+[ext_resource type="Texture2D" uid="uid://dc1ehomaiyfr" path="res://Assets/Textures/metal_mp_3.png" id="5_v1gob"]
+[ext_resource type="PackedScene" uid="uid://dql435ad6br5m" path="res://Scenes/Elevator.tscn" id="7_50glp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pbw6q"]
+sky_top_color = Color(0.00623782, 0.00550233, 0.00520107, 1)
+sky_horizon_color = Color(0.900449, 0.8988, 0.899209, 1)
+sky_curve = 0.713523
+ground_bottom_color = Color(1, 1, 1, 1)
+ground_horizon_color = Color(0.898807, 0.900201, 0.893892, 1)
+ground_curve = 1.68898
+
+[sub_resource type="Sky" id="Sky_50glp"]
+sky_material = SubResource("ProceduralSkyMaterial_pbw6q")
+process_mode = 1
 
 [sub_resource type="Environment" id="Environment_rgh2o"]
+background_mode = 2
+sky = SubResource("Sky_50glp")
+ssao_enabled = true
 glow_enabled = true
 glow_intensity = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+volumetric_fog_sky_affect = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kln2b"]
-albedo_texture = ExtResource("2_idj7w")
-uv1_scale = Vector3(-1.47, 5.085, 0.425)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_grg3l"]
+domain_warp_enabled = true
+domain_warp_type = 1
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_frkhe"]
+noise = SubResource("FastNoiseLite_grg3l")
+
+[sub_resource type="FogMaterial" id="FogMaterial_1p5hy"]
+density = 0.3
+albedo = Color(0, 0, 0, 1)
+emission = Color(0.340339, 0.340339, 0.340339, 1)
+edge_fade = 7.40091e-05
+density_texture = SubResource("NoiseTexture3D_frkhe")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4kpch"]
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_4kpch"]
+noise = SubResource("FastNoiseLite_4kpch")
+
+[sub_resource type="FogMaterial" id="FogMaterial_grg3l"]
+density = 8.0
+albedo = Color(0.682147, 0.69724, 0.674706, 1)
+emission = Color(0.422978, 0.446831, 0.263374, 1)
+edge_fade = 0.5
+density_texture = SubResource("NoiseTexture3D_4kpch")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idj7w"]
 albedo_texture = ExtResource("1_r150o")
-uv1_scale = Vector3(24, 24, 24)
+uv1_scale = Vector3(4, 4, 16)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pbw6q"]
-albedo_texture = ExtResource("2_rgh2o")
-uv1_scale = Vector3(12, 12, 12)
+[sub_resource type="BoxShape3D" id="BoxShape3D_rgh2o"]
+size = Vector3(512, 0.1, 512)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jw32o"]
+albedo_texture = ExtResource("5_v1gob")
 
 [node name="Main" type="Node3D"]
 
@@ -30,58 +76,103 @@ environment = SubResource("Environment_rgh2o")
 
 [node name="Level Geometry" type="Node" parent="."]
 
-[node name="CSGWalls" type="CSGCombiner3D" parent="Level Geometry"]
-transform = Transform3D(-8.74228e-08, -8.74228e-08, -2, 8.74228e-08, 2, -8.74228e-08, 2, -8.74228e-08, -8.74228e-08, -0.1, 16, 64)
-material_override = SubResource("StandardMaterial3D_kln2b")
+[node name="SpawnFog" type="FogVolume" parent="Level Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+size = Vector3(22, 24, 22)
+material = SubResource("FogMaterial_1p5hy")
+
+[node name="BarrierFog" type="FogVolume" parent="Level Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -128, 0)
+size = Vector3(512, 238, 512)
+material = SubResource("FogMaterial_grg3l")
+
+[node name="LevelPillar" parent="Level Geometry" instance=ExtResource("1_4kpch")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -320, 0)
+
+[node name="SpawnPillar" type="CSGBox3D" parent="Level Geometry"]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0.007, -1.45, 0)
 use_collision = true
-
-[node name="CSGWall -GlobalX" type="CSGBox3D" parent="Level Geometry/CSGWalls"]
-transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -32, 2.38419e-06, 32)
-size = Vector3(0.2, 16, 64)
-
-[node name="CSGWall +GlobalX" type="CSGBox3D" parent="Level Geometry/CSGWalls"]
-transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -32, 0, -32)
-size = Vector3(0.2, 16, 64)
-
-[node name="CSGWall -GlobalZ" type="CSGBox3D" parent="Level Geometry/CSGWalls"]
-transform = Transform3D(1, 0, 0, 0, 1, -1.64203e-15, 0, -1.64203e-15, 1, -64, 2.38419e-06, 2.79397e-06)
-size = Vector3(0.2, 16, 64)
-
-[node name="CSGWall +GlobalZ" type="CSGBox3D" parent="Level Geometry/CSGWalls"]
-transform = Transform3D(1, 0, 0, 0, 1, -1.64203e-15, 0, -1.64203e-15, 1, 0, 0, 0)
-size = Vector3(0.2, 16, 64)
-
-[node name="CSGFloorAndCeiling" type="CSGCombiner3D" parent="Level Geometry"]
-use_collision = true
-
-[node name="CSGFloor" type="CSGBox3D" parent="Level Geometry/CSGFloorAndCeiling"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00653076, 0.05, 0.000305176)
-use_collision = true
-size = Vector3(128, 0.1, 128)
+size = Vector3(8, 29, 8)
 material = SubResource("StandardMaterial3D_idj7w")
 
-[node name="CSGCeiling" type="CSGBox3D" parent="Level Geometry/CSGFloorAndCeiling"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.05, 0)
-use_collision = true
-size = Vector3(128, 0.1, 128)
-material = SubResource("StandardMaterial3D_pbw6q")
+[node name="KillArea" type="Area3D" parent="Level Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -256, 0)
+script = ExtResource("1_rgh2o")
+GameScene = ExtResource("3_vy5pj")
+
+[node name="KillFloor" type="CollisionShape3D" parent="Level Geometry/KillArea"]
+shape = SubResource("BoxShape3D_rgh2o")
 
 [node name="Level Objects" type="Node" parent="."]
 
-[node name="CeilingLamp" parent="Level Objects" instance=ExtResource("4_pbw6q")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 53, 32, 53)
+[node name="StartSign" parent="Level Objects" instance=ExtResource("4_pbw6q")]
+transform = Transform3D(1, 0, 0, 0, 3.2, 0, 0, 0, 3, -3, 2, 0)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Level Objects/StartSign"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, -0.462402, 0.497225)
+size = Vector3(0.1, 0.324805, 0.00538281)
+material = SubResource("StandardMaterial3D_jw32o")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Level Objects/StartSign"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, -0.462402, -0.496916)
+size = Vector3(0.1, 0.324805, 0.00538281)
+material = SubResource("StandardMaterial3D_jw32o")
+
+[node name="Carpet1" parent="Level Objects/StartSign" instance=ExtResource("3_jw32o")]
+transform = Transform3D(-5.68248e-08, 0, 1, 0, 0.3125, 0, -0.433333, 0, -1.45705e-08, 0, -0.625, 0)
+
+[node name="Elevator" parent="Level Objects" node_paths=PackedStringArray("Player") instance=ExtResource("7_50glp")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 1, 0)
+Player = NodePath("../../PlayerCharacter")
+
+[node name="Railings" type="Node" parent="Level Objects"]
+
+[node name="MetalRailing1" parent="Level Objects/Railings" instance=ExtResource("3_v1gob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.9)
+
+[node name="MetalRailing3" parent="Level Objects/Railings" instance=ExtResource("3_v1gob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3.9)
+
+[node name="MetalRailing4" parent="Level Objects/Railings" instance=ExtResource("3_v1gob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 3.9)
+
+[node name="MetalRailing5" parent="Level Objects/Railings" instance=ExtResource("3_v1gob")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, 2)
+
+[node name="MetalRailing8" parent="Level Objects/Railings" instance=ExtResource("3_v1gob")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, -4)
+
+[node name="MetalRailing9" parent="Level Objects/Railings" instance=ExtResource("3_v1gob")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.1, 0, -4)
+
+[node name="MetalRailing10" parent="Level Objects/Railings" instance=ExtResource("3_v1gob")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0999999, 0, -4)
+
+[node name="MetalRailing11" parent="Level Objects/Railings" instance=ExtResource("3_v1gob")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.9, 0, -4)
+
+[node name="MetalRailing12" parent="Level Objects/Railings" instance=ExtResource("3_v1gob")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.9, 0, -4)
+
+[node name="MetalRailing13" parent="Level Objects/Railings" instance=ExtResource("3_v1gob")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.9, 0, -3.8)
+
+[node name="MetalRailing14" parent="Level Objects/Railings" instance=ExtResource("3_v1gob")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.9, 0, -1.7)
+
+[node name="MetalRailing15" parent="Level Objects/Railings" instance=ExtResource("3_v1gob")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.9, 0, 0.3)
+
+[node name="MetalRailing16" parent="Level Objects/Railings" instance=ExtResource("3_v1gob")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.9, 0, 2.2)
+
+[node name="MetalRailing2" parent="Level Objects/Railings" instance=ExtResource("3_v1gob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3.9)
+
+[node name="Level Lights" type="Node" parent="."]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_kln2b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.3, 1.1, 0)
+collision_layer = 3
 
-[node name="RigidBody3D" parent="." instance=ExtResource("6_v1gob")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 2, 28)
-
-[node name="RigidBody3D2" parent="." instance=ExtResource("6_v1gob")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 2, 30)
-
-[node name="RigidBody3D3" parent="." instance=ExtResource("6_v1gob")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 2, 32)
-
-[node name="RigidBody3D4" parent="." instance=ExtResource("6_v1gob")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 2, 34)
+[connection signal="body_entered" from="Level Geometry/KillArea" to="Level Geometry/KillArea" method="KillEvent"]

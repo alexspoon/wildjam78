@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://e8tfh3fxwuu1"]
+
+[ext_resource type="Texture2D" uid="uid://dc1ehomaiyfr" path="res://Assets/Textures/metal_mp_3.png" id="1_1u2tf"]
+[ext_resource type="Texture2D" uid="uid://wdrf6sdnbviw" path="res://Assets/Textures/plastic_3.png" id="2_7ewms"]
+[ext_resource type="FontFile" uid="uid://dwfwp4aey1pca" path="res://Assets/Fonts/yoster.ttf" id="3_okmm4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ai46"]
+albedo_texture = ExtResource("1_1u2tf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0agg"]
+albedo_texture = ExtResource("2_7ewms")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D"]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, -0.05, 0)
+size = Vector3(0.1, 0.5, 1)
+material = SubResource("StandardMaterial3D_6ai46")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.408945, -0.0493066, 0.0024024)
+operation = 2
+size = Vector3(0.0182617, 0.480645, 0.980156)
+material = SubResource("StandardMaterial3D_m0agg")
+
+[node name="Label3D" type="Label3D" parent="CSGBox3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1.2, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+pixel_size = 0.002
+shaded = true
+render_priority = 1
+outline_render_priority = 0
+modulate = Color(0.808721, 0.797638, 0.58034, 1)
+outline_modulate = Color(0.176816, 0.111765, 0.00911191, 1)
+text = "WASD to move.
+Space to jump.
+Shift to sprint.
+You have 2 jumps.
+Press F to toggle your flashlight.
+At your own discretion, take up arms and jump off of the platform.
+Good luck!"
+font = ExtResource("3_okmm4")
+font_size = 24
+uppercase = true
+autowrap_mode = 2

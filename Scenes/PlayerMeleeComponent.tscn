@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfcb4wbdswm4g"]
+
+[ext_resource type="Script" uid="uid://bb35ufxpihdcr" path="res://Scripts/PlayerMeleeComponent.cs" id="1_2vo61"]
+
+[node name="PlayerMeleeComponent" type="Node"]
+script = ExtResource("1_2vo61")

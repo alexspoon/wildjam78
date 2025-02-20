@@ -33,29 +33,35 @@ public partial class PlayerMoveAndLookComponent : Node
     
     //Look variables
     [Export] private float MouseSensitivity;        //Recommended: 0.5
-    private RayCast3D HeadRaycast;
     private Node3D Head;
     private Camera3D Camera;
     private Basis ParentBasis;
     private Vector3 ParentBasisRotation;
     
+    //Flashlight variables
+    private SpotLight3D PlayerFlashlight;
+    private bool FlashlightToggle;
+    
+    //Called at node initialization
     public override void _Ready()
     {
         Parent = GetParent() as CharacterBody3D;
         Head = Parent.GetNode<Node3D>("Head");
-        HeadRaycast = Head.GetNode<RayCast3D>("HeadRaycast");
         Camera = Head.GetNode<Camera3D>("Camera");
+        PlayerFlashlight = Head.GetNode<SpotLight3D>("PlayerFlashlight");
     }
 
+    //Called every frame
     public override void _Process(double delta)
     {
         Input.MouseMode = Input.MouseModeEnum.Captured;
         Move(delta);
         HandleFov(delta);
+        HandleFlashlight();
     }
 
     //Handle player head rotation with mouse input
-    public override void _Input(InputEvent @event)
+    public override void _UnhandledInput(InputEvent @event)
     {
         if (@event is InputEventMouseMotion)
         {
@@ -128,9 +134,15 @@ public partial class PlayerMoveAndLookComponent : Node
             MathF.Max(0, MoveSpeed - targetVelocityWithoutY.Dot(deltaVelocity.Normalized())));
         TargetVelocity += deltaVelocity;
         
+        //If head touches ceiling, stop upward velocity
+        if (Parent.IsOnCeiling())
+            TargetVelocity.Y = 0;
+        
         //Apply gravity
         if (!Parent.IsOnFloor())
             TargetVelocity.Y -= Gravity * (float)delta * 2f;
+        
+        
 
         //Reset amount of jumps left
         if (Parent.IsOnFloor())
@@ -177,5 +189,25 @@ public partial class PlayerMoveAndLookComponent : Node
             Camera.Fov = Mathf.Lerp(Camera.Fov, DefaultFov + JumpFov, 3f * delta);
         }
         else Camera.Fov = Mathf.Lerp(Camera.Fov, DefaultFov, 7.5f * delta);
+    }
+    
+    private void HandleFlashlight()
+    {
+        if (FlashlightToggle)
+        {
+            PlayerFlashlight.LightEnergy = 16;
+            PlayerFlashlight.LightVolumetricFogEnergy = 8;
+        }
+        else
+        {
+            PlayerFlashlight.LightEnergy = 0;
+            PlayerFlashlight.LightVolumetricFogEnergy = 0;
+        }
+        
+        if (Input.IsActionJustPressed("inputF"))
+        {
+            FlashlightToggle = !FlashlightToggle;
+            GD.Print(FlashlightToggle);
+        }
     }
 }
