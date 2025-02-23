@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cngt4kmuppvxh"]
+
+[ext_resource type="Shader" uid="uid://cthf7dfts2h8a" path="res://Assets/Shaders/ChromaticAbberationSphere.gdshader" id="1_4duuq"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_4duuq")
+shader_parameter/sphere_color = Color(0, 0, 0, 0)
+shader_parameter/wave_amplitude = 0.01
+shader_parameter/wave_frequency = 20.0
+shader_parameter/wave_speed = 5.0
+shader_parameter/chroma_amount = 1.0
+shader_parameter/stars_enabled = true
+shader_parameter/star_field_scale = 2.846
+shader_parameter/star_size = 0.002
+shader_parameter/star_intensity = 1.0
+shader_parameter/star_axis_speed = 0.051
+shader_parameter/star_move_mode = 2

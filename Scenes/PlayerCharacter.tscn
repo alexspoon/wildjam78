@@ -1,19 +1,46 @@
-[gd_scene load_steps=15 format=3 uid="uid://6p0gptqf1lg6"]
+[gd_scene load_steps=24 format=3 uid="uid://6p0gptqf1lg6"]
 
 [ext_resource type="PackedScene" uid="uid://deultft1rbp2m" path="res://Scenes/PlayerMoveAndLookComponent.tscn" id="1_5gnj7"]
-[ext_resource type="Animation" uid="uid://c1w2jf1a6nguc" path="res://Assets/Animations/BeamSwing.res" id="1_id6tp"]
+[ext_resource type="Texture2D" uid="uid://vlq68klepn6p" path="res://Assets/Textures/crosshair006.png" id="1_r4x55"]
 [ext_resource type="Texture2D" uid="uid://bqo8cuswwljp5" path="res://Assets/Textures/pcb_1.png" id="1_v7sut"]
+[ext_resource type="Texture2D" uid="uid://c4vtvrwf3ag5u" path="res://Assets/Textures/HPBar/Border_Style_1.png" id="2_wnmxb"]
+[ext_resource type="Texture2D" uid="uid://c4awwt6r66n18" path="res://Assets/Textures/HPBar/Style_3.png" id="3_k5f8r"]
+[ext_resource type="FontFile" uid="uid://dwfwp4aey1pca" path="res://Assets/Fonts/yoster.ttf" id="4_cl0yw"]
+[ext_resource type="Texture2D" uid="uid://cq6iplrvy0lbd" path="res://Assets/Textures/HPBar/Style_3green.png" id="4_k5f8r"]
 [ext_resource type="Material" uid="uid://bpt0fsv685nqr" path="res://Assets/Materials/DebugMeshGreen.tres" id="4_mdaju"]
 [ext_resource type="Shader" uid="uid://cgkraorjqg7y" path="res://Assets/Shaders/psx_camera_shader.gdshader" id="4_r4x55"]
+[ext_resource type="PackedScene" uid="uid://dklv8asa0gxr7" path="res://Scenes/PlayerStatsHandler.tscn" id="7_vjvuw"]
 
-[sub_resource type="Animation" id="Animation_id6tp"]
-length = 0.001
+[sub_resource type="LabelSettings" id="LabelSettings_vjvuw"]
+font = ExtResource("4_cl0yw")
+font_size = 24
+font_color = Color(0.938921, 0, 0.0908769, 1)
+outline_size = 3
+outline_color = Color(0.486899, 0, 0.0260438, 1)
+shadow_size = 0
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wnmxb"]
-_data = {
-&"BeamSwing": ExtResource("1_id6tp"),
-&"RESET": SubResource("Animation_id6tp")
-}
+[sub_resource type="LabelSettings" id="LabelSettings_uvrlg"]
+font = ExtResource("4_cl0yw")
+font_size = 24
+font_color = Color(0.395308, 0.616167, 0.0853477, 1)
+outline_size = 3
+outline_color = Color(0.261454, 0.415264, 0.0493886, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cl0yw"]
+font = ExtResource("4_cl0yw")
+font_size = 24
+font_color = Color(1, 0.839023, 0.375815, 1)
+outline_size = 3
+outline_color = Color(0.402728, 0.307609, 0, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_fkgr2"]
+font = ExtResource("4_cl0yw")
+font_size = 25
+font_color = Color(0.78211, 0.620882, 3.85046e-07, 1)
+outline_size = 4
+outline_color = Color(0.29722, 0.267443, 0, 1)
+shadow_size = 0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5gnj7"]
 
@@ -23,13 +50,15 @@ _data = {
 albedo_texture = ExtResource("1_v7sut")
 uv1_scale = Vector3(10, 10, 1)
 
+[sub_resource type="SphereMesh" id="SphereMesh_mdaju"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_5gnj7"]
 size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_5gnj7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_id6tp"]
-render_priority = -1
+render_priority = -10
 shader = ExtResource("4_r4x55")
 shader_parameter/enable_fog = false
 shader_parameter/fog_color = Color(0, 0, 0, 1)
@@ -48,13 +77,143 @@ material = SubResource("ShaderMaterial_id6tp")
 flip_faces = true
 size = Vector2(2, 2)
 
+[sub_resource type="Curve3D" id="Curve3D_vjvuw"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -2.01035, 0, -1.00465, 0, 0, 0, 0, 0, 0, -1.015, 0, -2.02288, 0, 0, 0, 0, 0, 0, 0.987154, 0, -2.02288, 0, 0, 0, 0, 0, 0, 1.98251, 0, -1.01609, 0, 0, 0, 0, 0, 0, 1.99395, 0, 0.986064, 0, 0, 0, 0, 0, 0, 0.998595, 0, 1.98142, 0, 0, 0, 0, 0, 0, -0.992115, 0, 1.98142, 0, 0, 0, 0, 0, 0, -2.02179, 0, 0.974623),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
 [node name="PlayerCharacter" type="CharacterBody3D"]
 physics_interpolation_mode = 1
 
-[node name="PlayerAnimation" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_wnmxb")
-}
+[node name="PlayerUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerCrosshair" type="TextureRect" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(64, 64)
+texture = ExtResource("1_r4x55")
+stretch_mode = 3
+
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00680555
+anchor_top = 0.895185
+anchor_right = 0.166806
+anchor_bottom = 0.938148
+offset_left = -35.84
+offset_top = 1.91998
+offset_right = 35.84
+offset_bottom = -1.92004
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.72, 1.16)
+pivot_offset = Vector2(128, 12)
+value = 100.0
+nine_patch_stretch = true
+texture_over = ExtResource("2_wnmxb")
+texture_progress = ExtResource("3_k5f8r")
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthLabel" type="Label" parent="PlayerUI/PlayerHealthBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.421875
+anchor_top = 0.0208333
+anchor_right = 0.578125
+anchor_bottom = 0.979167
+grow_horizontal = 2
+grow_vertical = 2
+text = "HEALTH"
+label_settings = SubResource("LabelSettings_vjvuw")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerStaminaBar" type="TextureProgressBar" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00680555
+anchor_top = 0.944568
+anchor_right = 0.166806
+anchor_bottom = 0.987531
+offset_left = -35.84
+offset_top = 1.91998
+offset_right = 35.84
+offset_bottom = -1.92004
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.72, 1.16)
+pivot_offset = Vector2(128, 12)
+value = 100.0
+nine_patch_stretch = true
+texture_over = ExtResource("2_wnmxb")
+texture_progress = ExtResource("4_k5f8r")
+metadata/_edit_use_anchors_ = true
+
+[node name="StaminaLabel" type="Label" parent="PlayerUI/PlayerStaminaBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.421875
+anchor_top = 0.0208333
+anchor_right = 0.578125
+anchor_bottom = 0.979167
+grow_horizontal = 2
+grow_vertical = 2
+text = "STAMINA"
+label_settings = SubResource("LabelSettings_uvrlg")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AmmoLabel" type="Label" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00694444
+anchor_top = 0.851852
+anchor_right = 0.0920139
+anchor_bottom = 0.894415
+offset_bottom = -1.58057
+scale = Vector2(1, 1.06079)
+pivot_offset = Vector2(49, 13)
+text = "AMMO: "
+label_settings = SubResource("LabelSettings_cl0yw")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SpeedLabel" type="Label" parent="PlayerUI"]
+layout_mode = 0
+anchor_left = 0.00694444
+anchor_top = 0.811728
+anchor_right = 0.0920139
+anchor_bottom = 0.851852
+offset_right = -58.0
+offset_bottom = -3.0
+pivot_offset = Vector2(49, 13)
+text = "SPEED: "
+label_settings = SubResource("LabelSettings_fkgr2")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="PlayerMoveAndLookComponent" parent="." instance=ExtResource("1_5gnj7")]
 JumpForce = 7.5
@@ -68,6 +227,10 @@ CrouchFov = -10.0
 JumpFov = 2.5
 MouseSensitivity = 0.25
 
+[node name="PlayerStatsHandler" parent="." instance=ExtResource("7_vjvuw")]
+MaxHealth = 100.0
+MaxStamina = 100.0
+
 [node name="Collider" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_5gnj7")
 
@@ -78,10 +241,20 @@ surface_material_override/0 = SubResource("StandardMaterial3D_mdaju")
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 
+[node name="HandPoint" type="Node3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.6, -0.8)
+
+[node name="DebugPoint" type="MeshInstance3D" parent="Head/HandPoint"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.2, 0, -0.2)
+visible = false
+mesh = SubResource("SphereMesh_mdaju")
+
 [node name="PlayerFlashlight" type="SpotLight3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 light_energy = 0.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
+shadow_enabled = true
 spot_range = 10.0
 spot_angle = 30.0
 
@@ -102,8 +275,17 @@ target_position = Vector3(0, 0, -2.5)
 collide_with_areas = true
 
 [node name="Camera" type="Camera3D" parent="Head"]
+far = 200.0
 
 [node name="PSXShader" type="MeshInstance3D" parent="Head/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9)
 cast_shadow = 0
+gi_mode = 0
 mesh = SubResource("QuadMesh_wnmxb")
+
+[node name="ChasePath" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+curve = SubResource("Curve3D_vjvuw")
+
+[node name="ChasePathFollow" type="PathFollow3D" parent="ChasePath"]
+transform = Transform3D(0.715095, 0, -0.699027, 0, 1, 0, 0.699027, 0, 0.715095, -2.01035, 0, -1.00465)

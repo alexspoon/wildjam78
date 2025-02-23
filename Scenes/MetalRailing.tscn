@@ -1,11 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://co7ssrjqm3gvh"]
+[gd_scene load_steps=7 format=3 uid="uid://co7ssrjqm3gvh"]
 
 [ext_resource type="PackedScene" uid="uid://1eyimsermbf2" path="res://Assets/Models/MetalRailing1/hand_rail_3.glb" id="1_efwpd"]
+[ext_resource type="Texture2D" uid="uid://cgosgljt5h43p" path="res://Assets/Models/MetalRailing1/hand_rail_3_metal_mp_5.png" id="2_s0qag"]
+[ext_resource type="Texture2D" uid="uid://c1atukxy3u1ok" path="res://Assets/Models/MetalRailing1/hand_rail_3_rubber_1.png" id="3_31ljh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_31ljh"]
+resource_name = "metal_mp_5"
+cull_mode = 2
+albedo_texture = ExtResource("2_s0qag")
+metallic = 0.5
+metallic_specular = 0.3
+roughness = 0.4
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6apm6"]
+resource_name = "rubber_1"
+cull_mode = 2
+albedo_texture = ExtResource("3_31ljh")
+roughness = 0.35
+texture_filter = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s0qag"]
 size = Vector3(2.2, 1.3, 0.1)
 
 [node name="MetalRailing1" instance=ExtResource("1_efwpd")]
+
+[node name="hand_rail_3" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_31ljh")
+surface_material_override/1 = SubResource("StandardMaterial3D_6apm6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0.649128, 0)

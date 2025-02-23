@@ -1,3 +1,210 @@
-[gd_scene format=3 uid="uid://bysj337am5foe"]
+[gd_scene load_steps=9 format=3 uid="uid://bysj337am5foe"]
+
+[ext_resource type="PackedScene" uid="uid://w0dvcp1ofbch" path="res://Assets/Models/ShotgunWeapon/shotgun_1.glb" id="1_t845t"]
+[ext_resource type="Script" uid="uid://b52y5qoke16s6" path="res://Scripts/ShotgunWeapon.cs" id="1_yn000"]
+[ext_resource type="Texture2D" uid="uid://cp04h7xbb1xdi" path="res://Assets/Models/ShotgunWeapon/shotgun_1_shotgun_1.png" id="3_3tc7h"]
+[ext_resource type="PackedScene" uid="uid://djnj7kgcseott" path="res://Scenes/muzzleFlashParticles.tscn" id="3_xxxwl"]
+
+[sub_resource type="Animation" id="Animation_xxxwl"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MuzzlePosition/muzzleFlashParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MuzzlePosition/muzzleFlashParticles/smokeParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MuzzlePosition/muzzleFlashParticles/flashParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MuzzlePosition/MuzzleFlashLight:light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MuzzlePosition/MuzzleFlashLight:light_volumetric_fog_energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_yn000"]
+resource_name = "ShotgunFire"
+length = 0.35
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.15, 1, 0, -0.02, 0.05, 0.3, 1, 0, 0, 0)
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.15, 0.3)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MuzzlePosition/muzzleFlashParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MuzzlePosition/muzzleFlashParticles/smokeParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MuzzlePosition/muzzleFlashParticles/flashParticles:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MuzzlePosition/MuzzleFlashLight:light_energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.06),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 16.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MuzzlePosition/MuzzleFlashLight:light_volumetric_fog_energy")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.06),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 8.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3tc7h"]
+_data = {
+&"RESET": SubResource("Animation_xxxwl"),
+&"ShotgunFire": SubResource("Animation_yn000")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fhw7v"]
+resource_name = "shotgun_1"
+cull_mode = 2
+albedo_texture = ExtResource("3_3tc7h")
+metallic = 0.25
+roughness = 0.75
+texture_filter = 2
 
 [node name="ShotgunWeapon" type="Node3D"]
+script = ExtResource("1_yn000")
+ShotgunDamage = 50.0
+
+[node name="ShotgunAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3tc7h")
+}
+
+[node name="ShotgunMesh" parent="." instance=ExtResource("1_t845t")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
+
+[node name="shotgun_1" parent="ShotgunMesh" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_fhw7v")
+
+[node name="MuzzlePosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0329689, 0.125698, -0.703314)
+
+[node name="muzzleFlashParticles" parent="MuzzlePosition" instance=ExtResource("3_xxxwl")]
+
+[node name="MuzzleRaycast" type="RayCast3D" parent="MuzzlePosition"]
+target_position = Vector3(0, 0, -20)
+debug_shape_custom_color = Color(0.819763, 0, 0.10122, 1)
+
+[node name="MuzzleFlashLight" type="SpotLight3D" parent="MuzzlePosition"]
+light_color = Color(0.820067, 0.431158, 1.92523e-07, 1)
+light_energy = 0.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+spot_angle = 30.0
+
+[editable path="ShotgunMesh"]
+[editable path="MuzzlePosition/muzzleFlashParticles"]

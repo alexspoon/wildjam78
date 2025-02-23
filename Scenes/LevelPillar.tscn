@@ -5,6 +5,9 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkt72"]
 albedo_texture = ExtResource("2_exajp")
+metallic = 0.5
+roughness = 0.75
+normal_enabled = true
 uv1_scale = Vector3(64, 64, 64)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ctiie"]

@@ -1,17 +1,65 @@
-[gd_scene load_steps=4 format=3 uid="uid://c51tc2m3fwq4"]
+[gd_scene load_steps=16 format=3 uid="uid://c51tc2m3fwq4"]
 
-[ext_resource type="PackedScene" uid="uid://6p0gptqf1lg6" path="res://Scenes/PlayerCharacter.tscn" id="1_2wl7v"]
-[ext_resource type="Environment" uid="uid://rny8rgixtqg7" path="res://Assets/Environments/GameSceneEnvironment.tres" id="1_3mbwn"]
 [ext_resource type="PackedScene" uid="uid://deb5ho2jmhvqo" path="res://Scenes/LevelPillar.tscn" id="1_4bvgx"]
+[ext_resource type="PackedScene" uid="uid://b8rjs480t8aqj" path="res://Scenes/TestEnemy.tscn" id="2_4bvgx"]
+[ext_resource type="Script" uid="uid://bc8ulgriradlm" path="res://Scripts/ShotgunAmmoBoxPickup.cs" id="3_x6js8"]
+[ext_resource type="PackedScene" uid="uid://bksblat1egy4q" path="res://Assets/Models/ShotgunAmmoBox/shotgun_ammo_2.glb" id="4_lg2j6"]
+[ext_resource type="Texture2D" uid="uid://bdx1j01836dyk" path="res://Assets/Models/ShotgunAmmoBox/shotgun_ammo_2_shotgun_ammo_2.png" id="5_y30xb"]
+[ext_resource type="Shader" uid="uid://nmf81c307nlq" path="res://Assets/Shaders/PickupHighlight.gdshader" id="6_xhjei"]
+[ext_resource type="Shader" uid="uid://0dmvgm0gev8" path="res://Assets/Shaders/Outline.gdshader" id="7_6vvcf"]
+[ext_resource type="PackedScene" uid="uid://nr5hkj10xwti" path="res://Scenes/ShopPOI.tscn" id="8_lg2j6"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4kpch"]
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_4kpch"]
+noise = SubResource("FastNoiseLite_4kpch")
+
+[sub_resource type="FogMaterial" id="FogMaterial_2wl7v"]
+density = 0.5
+albedo = Color(0.682147, 0.69724, 0.674706, 1)
+emission = Color(0.422978, 0.446831, 0.263374, 1)
+edge_fade = 0.5
+density_texture = SubResource("NoiseTexture3D_4kpch")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jhf0u"]
+render_priority = 0
+shader = ExtResource("6_xhjei")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/cycle_interval = 1.0
+shader_parameter/shine_speed = 3.0
+shader_parameter/shine_width = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cr6v8"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_jhf0u")
+shader = ExtResource("7_6vvcf")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_width = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f43ej"]
+resource_local_to_scene = true
+resource_name = "shotgun_ammo_2"
+next_pass = SubResource("ShaderMaterial_cr6v8")
+cull_mode = 2
+albedo_texture = ExtResource("5_y30xb")
+texture_filter = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3oahi"]
+size = Vector3(0.248663, 0.233252, 0.157507)
 
 [node name="GameScene" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("1_3mbwn")
+[node name="Level Enemies" type="Node" parent="."]
 
 [node name="Level Geometry" type="Node" parent="."]
 
 [node name="LevelPillar" parent="Level Geometry" instance=ExtResource("1_4bvgx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -384, 0)
+
+[node name="FogVolume" type="FogVolume" parent="Level Geometry"]
+shape = 4
+material = SubResource("FogMaterial_2wl7v")
 
 [node name="Level Objects" type="Node" parent="."]
 
@@ -20,7 +68,33 @@ environment = ExtResource("1_3mbwn")
 [node name="Level Lights" type="Node" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level Lights"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 128, 0)
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, 1, 1, 4.37114e-08, -4.37114e-08, 0, 0, 0)
 
-[node name="PlayerCharacter" parent="." instance=ExtResource("1_2wl7v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64, 0)
+[node name="TestEnemy" parent="." instance=ExtResource("2_4bvgx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -386, -6)
+
+[node name="TestEnemy2" parent="." instance=ExtResource("2_4bvgx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -386, -7)
+
+[node name="TestEnemy3" parent="." instance=ExtResource("2_4bvgx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -386, -5)
+
+[node name="ShotgunAmmoBoxPickup" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -388, -1)
+script = ExtResource("3_x6js8")
+AmmoCount = 10000
+
+[node name="shotgun_ammo_22" parent="ShotgunAmmoBoxPickup" instance=ExtResource("4_lg2j6")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="shotgun_ammo_2" parent="ShotgunAmmoBoxPickup/shotgun_ammo_22" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_f43ej")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShotgunAmmoBoxPickup"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -0.000186205, 1.11652, -0.019989)
+shape = SubResource("BoxShape3D_3oahi")
+
+[node name="ShopPOI" parent="." instance=ExtResource("8_lg2j6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, -388, -18)
+
+[editable path="ShotgunAmmoBoxPickup/shotgun_ammo_22"]

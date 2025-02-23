@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8granlqealih"]
+
+[ext_resource type="Script" uid="uid://lsjqta2o5gv2" path="res://Scripts/ShotgunPickup.cs" id="1_64sif"]
+[ext_resource type="PackedScene" uid="uid://w0dvcp1ofbch" path="res://Assets/Models/ShotgunWeapon/shotgun_1.glb" id="1_vw4o3"]
+[ext_resource type="Texture2D" uid="uid://cp04h7xbb1xdi" path="res://Assets/Models/ShotgunWeapon/shotgun_1_shotgun_1.png" id="2_7wupl"]
+[ext_resource type="Shader" uid="uid://0dmvgm0gev8" path="res://Assets/Shaders/Outline.gdshader" id="3_ook67"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7wupl"]
+size = Vector3(1.44441, 0.24863, 0.0696777)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_64sif"]
+render_priority = 0
+shader = ExtResource("3_ook67")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_width = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_64sif"]
+resource_name = "shotgun_1"
+next_pass = SubResource("ShaderMaterial_64sif")
+cull_mode = 2
+albedo_texture = ExtResource("2_7wupl")
+metallic = 0.25
+roughness = 0.75
+texture_filter = 2
+
+[node name="ShotgunPickup" type="RigidBody3D"]
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_64sif")
+
+[node name="PickupCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -0.0144166, 0.0325928, -0.0245926)
+shape = SubResource("BoxShape3D_7wupl")
+
+[node name="ShotgunMesh" parent="." instance=ExtResource("1_vw4o3")]
+
+[node name="shotgun_1" parent="ShotgunMesh" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_64sif")
+
+[editable path="ShotgunMesh"]

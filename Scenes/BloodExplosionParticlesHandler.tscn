@@ -1,0 +1,96 @@
+[gd_scene load_steps=11 format=3 uid="uid://b2yl8pdtustah"]
+
+[ext_resource type="Material" uid="uid://cngt4kmuppvxh" path="res://Assets/Materials/ChromaticAbberationShaderMaterial.tres" id="1_pdd0b"]
+
+[sub_resource type="Curve" id="Curve_tchfv"]
+_data = [Vector2(0.0121951, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), -3.60886, -3.60886, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_pq6xo"]
+curve = SubResource("Curve_tchfv")
+
+[sub_resource type="Curve" id="Curve_2dru3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hq5yb"]
+curve = SubResource("Curve_2dru3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tchfv"]
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 0.5
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
+scale_min = 0.25
+scale_max = 0.25
+scale_curve = SubResource("CurveTexture_hq5yb")
+alpha_curve = SubResource("CurveTexture_pq6xo")
+
+[sub_resource type="SphereMesh" id="SphereMesh_2dru3"]
+material = ExtResource("1_pdd0b")
+
+[sub_resource type="Animation" id="Animation_tchfv"]
+resource_name = "ParticleAnim"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_pq6xo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pq6xo"]
+_data = {
+&"ParticleAnim": SubResource("Animation_tchfv"),
+&"RESET": SubResource("Animation_pq6xo")
+}
+
+[node name="BloodExplosionParticles" type="GPUParticles3D"]
+emitting = false
+amount = 128
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_tchfv")
+draw_pass_1 = SubResource("SphereMesh_2dru3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pq6xo")
+}
+autoplay = "ParticleAnim"

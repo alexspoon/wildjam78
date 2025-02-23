@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://b214b1v7id8hr"]
+
+[ext_resource type="PackedScene" uid="uid://bksblat1egy4q" path="res://Assets/Models/ShotgunAmmoBox/shotgun_ammo_2.glb" id="1_cirk3"]
+[ext_resource type="Script" uid="uid://bc8ulgriradlm" path="res://Scripts/ShotgunAmmoBoxPickup.cs" id="1_fimc6"]
+[ext_resource type="Texture2D" uid="uid://bdx1j01836dyk" path="res://Assets/Models/ShotgunAmmoBox/shotgun_ammo_2_shotgun_ammo_2.png" id="2_noljd"]
+[ext_resource type="Shader" uid="uid://nmf81c307nlq" path="res://Assets/Shaders/PickupHighlight.gdshader" id="3_fimc6"]
+[ext_resource type="Shader" uid="uid://0dmvgm0gev8" path="res://Assets/Shaders/Outline.gdshader" id="5_jhf0u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jhf0u"]
+render_priority = 0
+shader = ExtResource("3_fimc6")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/cycle_interval = 1.0
+shader_parameter/shine_speed = 3.0
+shader_parameter/shine_width = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_akq5q"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_jhf0u")
+shader = ExtResource("5_jhf0u")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_width = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_akq5q"]
+resource_local_to_scene = true
+resource_name = "shotgun_ammo_2"
+next_pass = SubResource("ShaderMaterial_akq5q")
+cull_mode = 2
+albedo_texture = ExtResource("2_noljd")
+texture_filter = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3oahi"]
+size = Vector3(0.248663, 0.233252, 0.157507)
+
+[node name="ShotgunAmmoBoxPickup" type="RigidBody3D"]
+script = ExtResource("1_fimc6")
+AmmoCount = 10
+
+[node name="shotgun_ammo_22" parent="." instance=ExtResource("1_cirk3")]
+
+[node name="shotgun_ammo_2" parent="shotgun_ammo_22" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_akq5q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000186194, 0.116528, -0.019989)
+shape = SubResource("BoxShape3D_3oahi")
+
+[editable path="shotgun_ammo_22"]

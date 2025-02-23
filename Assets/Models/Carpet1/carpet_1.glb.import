@@ -13,8 +13,8 @@ dest_files=["res://.godot/imported/carpet_1.glb-6c48f36f2e02439835de09e30ff30988
 
 [params]
 
-nodes/root_type=""
-nodes/root_name=""
+nodes/root_type="Node3D"
+nodes/root_name="Carpet"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false

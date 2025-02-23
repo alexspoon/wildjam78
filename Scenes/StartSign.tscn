@@ -9,6 +9,8 @@ albedo_texture = ExtResource("1_1u2tf")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0agg"]
 albedo_texture = ExtResource("2_7ewms")
+metallic = 0.75
+roughness = 0.25
 
 [node name="CSGCombiner3D" type="CSGCombiner3D"]
 use_collision = true
@@ -25,21 +27,19 @@ size = Vector3(0.0182617, 0.480645, 0.980156)
 material = SubResource("StandardMaterial3D_m0agg")
 
 [node name="Label3D" type="Label3D" parent="CSGBox3D2"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1.2, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1.08, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 pixel_size = 0.002
 shaded = true
-render_priority = 1
-outline_render_priority = 0
-modulate = Color(0.808721, 0.797638, 0.58034, 1)
-outline_modulate = Color(0.176816, 0.111765, 0.00911191, 1)
 text = "WASD to move.
-Space to jump.
 Shift to sprint.
+E TO INTERACT.
+Space to jump.
 You have 2 jumps.
 Press F to toggle your flashlight.
 At your own discretion, take up arms and jump off of the platform.
 Good luck!"
 font = ExtResource("3_okmm4")
 font_size = 24
+outline_size = 6
 uppercase = true
 autowrap_mode = 2

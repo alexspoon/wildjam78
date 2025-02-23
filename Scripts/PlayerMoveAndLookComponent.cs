@@ -5,6 +5,7 @@ public partial class PlayerMoveAndLookComponent : Node
 {
     //Class variables
     private CharacterBody3D Parent;
+    private PlayerStatsHandler StatsHandler;
     
     //Move variables
     [Export] private float Gravity;                 //Recommended: 9.82
@@ -20,10 +21,16 @@ public partial class PlayerMoveAndLookComponent : Node
     private Vector3 TargetVelocity = Vector3.Zero;
     
     //Move states
-    private bool Walking;
-    private bool Sprinting;
-    private bool Jumping;
-    private bool Crouching;
+    public bool Walking;
+    public bool Sprinting;
+    public bool Jumping;
+    public bool Crouching;
+    
+    //Move state active status
+    public bool CanWalk;
+    public bool CanSprint;
+    public bool CanJump;
+    public bool CanCrouch;
     
     //FOV variables
     [Export] private float DefaultFov;              //Recommended: 80
@@ -46,9 +53,15 @@ public partial class PlayerMoveAndLookComponent : Node
     public override void _Ready()
     {
         Parent = GetParent() as CharacterBody3D;
+        StatsHandler = Parent.GetNode<PlayerStatsHandler>("PlayerStatsHandler");
         Head = Parent.GetNode<Node3D>("Head");
         Camera = Head.GetNode<Camera3D>("Camera");
         PlayerFlashlight = Head.GetNode<SpotLight3D>("PlayerFlashlight");
+
+        CanWalk = true;
+        CanSprint = true;
+        CanJump = true;
+        CanCrouch = true;
     }
 
     //Called every frame
@@ -58,6 +71,7 @@ public partial class PlayerMoveAndLookComponent : Node
         Move(delta);
         HandleFov(delta);
         HandleFlashlight();
+        StateMachine();
     }
 
     //Handle player head rotation with mouse input
@@ -110,17 +124,13 @@ public partial class PlayerMoveAndLookComponent : Node
         else Walking = false;
         
         //Apply sprint
-        if (Input.IsActionPressed("inputShift") && InputDirection != Vector3.Zero && !Sprinting)
+        if (Input.IsActionPressed("inputShift") && InputDirection != Vector3.Zero && !Sprinting && CanSprint)
         {
             Sprinting = true;
-            MoveSpeed *= 3f;
-            MoveAcceleration *= 3f;
         }
         else
         {
             Sprinting = false;
-            MoveSpeed = DefaultMoveSpeed;
-            MoveAcceleration = DefaultMoveAcceleration;
         }
         
         //Apply drag
@@ -152,10 +162,11 @@ public partial class PlayerMoveAndLookComponent : Node
         }
         
         //Apply jump
-        if (JumpsLeft > 0 && Input.IsActionJustPressed("inputSpace"))
+        if (JumpsLeft > 0 && Input.IsActionJustPressed("inputSpace") && CanJump)
         {
             Jumping = true;
             JumpsLeft--;
+            StatsHandler.CurrentStamina -= 15;
             TargetVelocity.Y = JumpForce;
         }
         
@@ -209,5 +220,54 @@ public partial class PlayerMoveAndLookComponent : Node
             FlashlightToggle = !FlashlightToggle;
             GD.Print(FlashlightToggle);
         }
+    }
+
+    private void HandleCrouch()
+    {
+        var crouchPos = Head.GlobalPosition.Y - 0.5f;
+        var defaultPos = Head.GlobalPosition.Y + 0.5f;
+        
+        if (Input.IsActionPressed("inputControl"))
+        {
+            
+        }
+    }
+
+    private void StateMachine()
+    {
+        if (StatsHandler.CurrentStamina <= 0)
+        {
+            CanSprint = false;
+            CanJump = false;
+        }
+        else
+        {
+            CanSprint = true;
+            CanJump = true;
+        }
+        
+        if (!CanSprint)
+            Sprinting = false;
+
+        if (!CanJump)
+            Jumping = false;
+
+        if (!CanWalk)
+            Walking = false;
+
+        if (!CanCrouch)
+            Crouching = false;
+        
+        if (Sprinting)
+        {
+            MoveSpeed *= 3f;
+            MoveAcceleration *= 3f;
+        }
+        else
+        {
+            MoveSpeed = DefaultMoveSpeed;
+            MoveAcceleration = DefaultMoveAcceleration;
+        }
+        
     }
 }

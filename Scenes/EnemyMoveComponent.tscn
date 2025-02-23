@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://m02v2qa71hd8"]
+
+[ext_resource type="Script" uid="uid://d4ghxmqg7q2uc" path="res://Scripts/EnemyMoveComponent.cs" id="1_cv273"]
+
+[node name="EnemyMoveComponent" type="Node"]
+script = ExtResource("1_cv273")
+ChaseSpeed = 750.0
+
+[node name="ChaseTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true

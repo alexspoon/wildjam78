@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://nci5ljs65od5"]
+
+[ext_resource type="PackedScene" uid="uid://b2yl8pdtustah" path="res://Scenes/BloodExplosionParticlesHandler.tscn" id="1_8dx4x"]
+
+[node name="Pivot" type="Node3D"]
+
+[node name="BloodExplosionParticles" parent="." instance=ExtResource("1_8dx4x")]
+explosiveness = 0.6

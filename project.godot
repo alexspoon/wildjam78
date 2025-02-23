@@ -15,6 +15,10 @@ run/main_scene="uid://c8kkyd1erbjvi"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+CustomSignals="*res://Scripts/CustomSignals.cs"
+
 [dotnet]
 
 project/assembly_name="wildjam78"

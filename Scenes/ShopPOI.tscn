@@ -1,0 +1,91 @@
+[gd_scene load_steps=16 format=3 uid="uid://nr5hkj10xwti"]
+
+[ext_resource type="PackedScene" uid="uid://c8yd5bqnybgp0" path="res://Assets/Models/ShopPOI/tunnel_straight.glb" id="1_7vp21"]
+[ext_resource type="PackedScene" uid="uid://d4mcg526cgqsf" path="res://Assets/Models/ShopPOI/bunker_entrance_1.glb" id="2_x8j67"]
+[ext_resource type="PackedScene" uid="uid://bpx17fye5ya1d" path="res://Assets/Models/ShopPOI/beam_7.glb" id="3_bwv4c"]
+[ext_resource type="PackedScene" uid="uid://ch76eqd774dcf" path="res://Assets/Models/ShopPOI/wall_1_plain.glb" id="4_v0ky3"]
+[ext_resource type="PackedScene" uid="uid://bgn8lv8g8xdn3" path="res://Assets/Models/ShopPOI/wall_1_round.glb" id="5_ju5da"]
+[ext_resource type="PackedScene" uid="uid://bgb13s2l2jhaq" path="res://Assets/Models/ShopPOI/tunnel_hole_2.glb" id="6_7k4tp"]
+[ext_resource type="PackedScene" uid="uid://bichqknfdcy7h" path="res://Assets/Models/ShopPOI/blast_door_1_frame.glb" id="7_407vb"]
+[ext_resource type="Texture2D" uid="uid://bib0tmm4xppxh" path="res://Assets/Models/ShopPOI/wood_floor_2.png" id="8_6qode"]
+[ext_resource type="PackedScene" uid="uid://mn6448nl85oc" path="res://Assets/Models/ShopPOI/ceiling_lamp_2_off.glb" id="9_tpkb8"]
+[ext_resource type="Texture2D" uid="uid://tkfnuvk0xbs" path="res://Assets/Models/ShopPOI/ceiling_lamp_2_on_ceiling_lamp_1_on.png" id="10_7k4tp"]
+[ext_resource type="Texture2D" uid="uid://b54assk61h4bx" path="res://Assets/Models/ShopPOI/ceiling_lamp_2_on_ceiling_lamp_1_on_emission.png" id="11_407vb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yposo"]
+albedo_texture = ExtResource("8_6qode")
+uv1_scale = Vector3(16, 16, 16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rwwae"]
+material = SubResource("StandardMaterial3D_yposo")
+size = Vector3(32, 0.01, 32)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qode"]
+albedo_texture = ExtResource("10_7k4tp")
+emission_enabled = true
+emission_energy_multiplier = 8.0
+emission_texture = ExtResource("11_407vb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tpkb8"]
+albedo_texture = ExtResource("10_7k4tp")
+emission_enabled = true
+emission_energy_multiplier = 8.0
+emission_texture = ExtResource("11_407vb")
+
+[node name="ShopPOI" type="StaticBody3D"]
+
+[node name="tunnel_straight2" parent="." instance=ExtResource("1_7vp21")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="bunker_entrance_12" parent="." instance=ExtResource("2_x8j67")]
+
+[node name="beam_72" parent="." instance=ExtResource("3_bwv4c")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 3.4, 0.9)
+
+[node name="wall_1_plain4" parent="." instance=ExtResource("4_v0ky3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -12)
+
+[node name="wall_1_plain5" parent="." instance=ExtResource("4_v0ky3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, -12)
+
+[node name="wall_1_plain6" parent="." instance=ExtResource("4_v0ky3")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5.73695e-07, 0, -18)
+
+[node name="wall_1_round2" parent="." instance=ExtResource("5_ju5da")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, -6)
+
+[node name="wall_1_round5" parent="." instance=ExtResource("5_ju5da")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -18)
+
+[node name="wall_1_round3" parent="." instance=ExtResource("5_ju5da")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6, 0, -6)
+
+[node name="wall_1_round4" parent="." instance=ExtResource("5_ju5da")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -6, 0, -18)
+
+[node name="tunnel_hole_22" parent="." instance=ExtResource("6_7k4tp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="blast_door_1_frame2" parent="." instance=ExtResource("7_407vb")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 1.5, 0, 0)
+
+[node name="Floor" type="CSGMesh3D" parent="."]
+transform = Transform3D(0.45573, 0, 0, 0, 1, 0, 0, 0, 0.383386, 0, -0.00496108, -12.1326)
+operation = 2
+use_collision = true
+mesh = SubResource("BoxMesh_rwwae")
+
+[node name="ceiling_lamp_2_off2" parent="." instance=ExtResource("9_tpkb8")]
+transform = Transform3D(-2.98023e-08, -4.37114e-08, 1, -1, 0, -2.98023e-08, 0, -1, -4.37114e-08, -1.4, 2.7, 0.3)
+
+[node name="ceiling_lamp_2_off" parent="ceiling_lamp_2_off2" index="0"]
+surface_material_override/2 = SubResource("StandardMaterial3D_6qode")
+
+[node name="ceiling_lamp_2_off3" parent="." instance=ExtResource("9_tpkb8")]
+transform = Transform3D(-2.98023e-08, -4.37114e-08, 1, -1, 0, -2.98023e-08, 0, -1, -4.37114e-08, 1.4, 2.7, 0.3)
+
+[node name="ceiling_lamp_2_off" parent="ceiling_lamp_2_off3" index="0"]
+surface_material_override/2 = SubResource("StandardMaterial3D_tpkb8")
+
+[editable path="ceiling_lamp_2_off2"]
+[editable path="ceiling_lamp_2_off3"]

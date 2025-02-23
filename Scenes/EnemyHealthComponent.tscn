@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvl4evokiclxn"]
+
+[ext_resource type="Script" uid="uid://ct372udbhp13" path="res://Scripts/EnemyHealthComponent.cs" id="1_c63gc"]
+[ext_resource type="PackedScene" uid="uid://nci5ljs65od5" path="res://Scenes/BloodParticlePivot.tscn" id="2_r2xuv"]
+
+[node name="EnemyHealthComponent" type="Node"]
+script = ExtResource("1_c63gc")
+BloodExplosion = ExtResource("2_r2xuv")
+MaxHealth = 100.0
