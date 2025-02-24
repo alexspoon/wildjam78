@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bkg668i47uu4t"]
+
+[ext_resource type="Texture2D" uid="uid://cstlcu4jl22qw" path="res://Assets/Textures/ogcobcoin.png" id="1_13a1c"]
+
+[resource]
+albedo_texture = ExtResource("1_13a1c")
+metallic = 0.9
+metallic_specular = 1.0
+roughness = 0.2
+emission = Color(0.755269, 0.640657, 0.264045, 1)

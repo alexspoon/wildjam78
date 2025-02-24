@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://6p0gptqf1lg6"]
+[gd_scene load_steps=23 format=3 uid="uid://6p0gptqf1lg6"]
 
 [ext_resource type="PackedScene" uid="uid://deultft1rbp2m" path="res://Scenes/PlayerMoveAndLookComponent.tscn" id="1_5gnj7"]
 [ext_resource type="Texture2D" uid="uid://vlq68klepn6p" path="res://Assets/Textures/crosshair006.png" id="1_r4x55"]
@@ -8,8 +8,8 @@
 [ext_resource type="FontFile" uid="uid://dwfwp4aey1pca" path="res://Assets/Fonts/yoster.ttf" id="4_cl0yw"]
 [ext_resource type="Texture2D" uid="uid://cq6iplrvy0lbd" path="res://Assets/Textures/HPBar/Style_3green.png" id="4_k5f8r"]
 [ext_resource type="Material" uid="uid://bpt0fsv685nqr" path="res://Assets/Materials/DebugMeshGreen.tres" id="4_mdaju"]
-[ext_resource type="Shader" uid="uid://cgkraorjqg7y" path="res://Assets/Shaders/psx_camera_shader.gdshader" id="4_r4x55"]
 [ext_resource type="PackedScene" uid="uid://dklv8asa0gxr7" path="res://Scenes/PlayerStatsHandler.tscn" id="7_vjvuw"]
+[ext_resource type="PackedScene" uid="uid://c8akgg33w0c0d" path="res://Scenes/PSXShader.tscn" id="10_vjvuw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vjvuw"]
 font = ExtResource("4_cl0yw")
@@ -17,7 +17,8 @@ font_size = 24
 font_color = Color(0.938921, 0, 0.0908769, 1)
 outline_size = 3
 outline_color = Color(0.486899, 0, 0.0260438, 1)
-shadow_size = 0
+shadow_size = 6
+shadow_color = Color(0.482353, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_uvrlg"]
 font = ExtResource("4_cl0yw")
@@ -25,6 +26,8 @@ font_size = 24
 font_color = Color(0.395308, 0.616167, 0.0853477, 1)
 outline_size = 3
 outline_color = Color(0.261454, 0.415264, 0.0493886, 1)
+shadow_size = 6
+shadow_color = Color(2.82768e-07, 0.355938, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_cl0yw"]
 font = ExtResource("4_cl0yw")
@@ -32,7 +35,8 @@ font_size = 24
 font_color = Color(1, 0.839023, 0.375815, 1)
 outline_size = 3
 outline_color = Color(0.402728, 0.307609, 0, 1)
-shadow_size = 0
+shadow_size = 6
+shadow_color = Color(0.190762, 0.190762, 0.190762, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_fkgr2"]
 font = ExtResource("4_cl0yw")
@@ -40,7 +44,16 @@ font_size = 25
 font_color = Color(0.78211, 0.620882, 3.85046e-07, 1)
 outline_size = 4
 outline_color = Color(0.29722, 0.267443, 0, 1)
-shadow_size = 0
+shadow_size = 6
+shadow_color = Color(0.190762, 0.190762, 0.190762, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qg2eu"]
+font = ExtResource("4_cl0yw")
+font_size = 20
+outline_size = 7
+outline_color = Color(0.144063, 0.144063, 0.144063, 1)
+shadow_size = 6
+shadow_color = Color(0.190762, 0.190762, 0.190762, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5gnj7"]
 
@@ -57,30 +70,10 @@ size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_5gnj7"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_id6tp"]
-render_priority = -10
-shader = ExtResource("4_r4x55")
-shader_parameter/enable_fog = false
-shader_parameter/fog_color = Color(0, 0, 0, 1)
-shader_parameter/noise_color = Color(0, 0, 0, 1)
-shader_parameter/fog_distance = 100.0
-shader_parameter/fog_fade_range = 50.0
-shader_parameter/enable_noise = false
-shader_parameter/noise_time_fac = 4.0
-shader_parameter/enable_color_limitation = true
-shader_parameter/color_levels = 48
-shader_parameter/enable_dithering = true
-shader_parameter/dither_strength = 1.0
-
-[sub_resource type="QuadMesh" id="QuadMesh_wnmxb"]
-material = SubResource("ShaderMaterial_id6tp")
-flip_faces = true
-size = Vector2(2, 2)
-
 [sub_resource type="Curve3D" id="Curve3D_vjvuw"]
 closed = true
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -2.01035, 0, -1.00465, 0, 0, 0, 0, 0, 0, -1.015, 0, -2.02288, 0, 0, 0, 0, 0, 0, 0.987154, 0, -2.02288, 0, 0, 0, 0, 0, 0, 1.98251, 0, -1.01609, 0, 0, 0, 0, 0, 0, 1.99395, 0, 0.986064, 0, 0, 0, 0, 0, 0, 0.998595, 0, 1.98142, 0, 0, 0, 0, 0, 0, -0.992115, 0, 1.98142, 0, 0, 0, 0, 0, 0, -2.02179, 0, 0.974623),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -2.01035, 0, -1.00465, 0, 0, 0, 0, 0, 0, -1.015, 2, -2.02288, 0, 0, 0, 0, 0, 0, 0.987154, 0, -2.02288, 0, 0, 0, 0, 0, 0, 1.98251, 2, -1.01609, 0, 0, 0, 0, 0, 0, 1.99395, 0, 0.986064, 0, 0, 0, 0, 0, 0, 0.998595, 2, 1.98142, 0, 0, 0, 0, 0, 0, -0.992115, 0, 1.98142, 0, 0, 0, 0, 0, 0, -2.02179, 2, 0.974623),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 8
@@ -215,6 +208,20 @@ label_settings = SubResource("LabelSettings_fkgr2")
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="FPSLabel" type="Label" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00694444
+anchor_top = 0.0123457
+anchor_right = 0.0503472
+anchor_bottom = 0.058642
+pivot_offset = Vector2(25, 15)
+text = "FPS:"
+label_settings = SubResource("LabelSettings_qg2eu")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="PlayerMoveAndLookComponent" parent="." instance=ExtResource("1_5gnj7")]
 JumpForce = 7.5
 DefaultMoveSpeed = 10.0
@@ -250,11 +257,13 @@ visible = false
 mesh = SubResource("SphereMesh_mdaju")
 
 [node name="PlayerFlashlight" type="SpotLight3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.45352)
 light_energy = 0.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 shadow_enabled = true
+shadow_blur = 1.5
+distance_fade_enabled = true
 spot_range = 10.0
 spot_angle = 30.0
 
@@ -277,15 +286,13 @@ collide_with_areas = true
 [node name="Camera" type="Camera3D" parent="Head"]
 far = 200.0
 
-[node name="PSXShader" type="MeshInstance3D" parent="Head/Camera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9)
-cast_shadow = 0
-gi_mode = 0
-mesh = SubResource("QuadMesh_wnmxb")
+[node name="PSXShader" parent="Head/Camera" instance=ExtResource("10_vjvuw")]
+visible = true
+ignore_occlusion_culling = true
 
 [node name="ChasePath" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 curve = SubResource("Curve3D_vjvuw")
 
 [node name="ChasePathFollow" type="PathFollow3D" parent="ChasePath"]
-transform = Transform3D(0.715095, 0, -0.699027, 0, 1, 0, 0.699027, 0, 0.715095, -2.01035, 0, -1.00465)
+transform = Transform3D(0.715095, -0.569448, -0.405421, -2.98023e-08, 0.579979, -0.81463, 0.699026, 0.582538, 0.41474, -2.01035, 0, -1.00465)

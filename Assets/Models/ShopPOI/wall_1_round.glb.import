@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/wall_1_round.glb-ec14ba4813a8d6644eae976e3d27
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="StaticBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/tunnel_straight.glb-16eb7cb74bcda0d9500212844
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="StaticBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

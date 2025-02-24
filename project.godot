@@ -13,7 +13,13 @@ config_version=5
 config/name="wildjam78"
 run/main_scene="uid://c8kkyd1erbjvi"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
+run/max_fps=165
+boot_splash/bg_color=Color(0.0724018, 0.0421933, 0, 0.635294)
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+boot_splash/image="uid://cyq3ogx1fpco6"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=1000
 
 [autoload]
 
@@ -117,4 +123,8 @@ inputF={
 
 [rendering]
 
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=3
+anti_aliasing/quality/msaa_3d=1
 occlusion_culling/use_occlusion_culling=true
+mesh_lod/lod_change/threshold_pixels=0.0

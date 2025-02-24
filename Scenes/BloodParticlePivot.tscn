@@ -1,8 +1,185 @@
-[gd_scene load_steps=2 format=3 uid="uid://nci5ljs65od5"]
+[gd_scene load_steps=15 format=3 uid="uid://nci5ljs65od5"]
 
-[ext_resource type="PackedScene" uid="uid://b2yl8pdtustah" path="res://Scenes/BloodExplosionParticlesHandler.tscn" id="1_8dx4x"]
+[ext_resource type="Material" uid="uid://cngt4kmuppvxh" path="res://Assets/Materials/ChromaticAbberationShaderMaterial.tres" id="1_8dx4x"]
+[ext_resource type="Material" uid="uid://bkg668i47uu4t" path="res://Assets/Materials/Cobsonium.tres" id="2_ifips"]
+
+[sub_resource type="Curve" id="Curve_tchfv"]
+_data = [Vector2(0.0121951, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), -3.60886, -3.60886, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_pq6xo"]
+curve = SubResource("Curve_tchfv")
+
+[sub_resource type="Curve" id="Curve_2dru3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hq5yb"]
+curve = SubResource("Curve_2dru3")
+
+[sub_resource type="Curve" id="Curve_8dx4x"]
+_data = [Vector2(0.0405405, 0), 0.0, 2.55834, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ifips"]
+curve = SubResource("Curve_8dx4x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tchfv"]
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 0.5
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
+scale_min = 0.25
+scale_max = 0.25
+scale_curve = SubResource("CurveTexture_hq5yb")
+alpha_curve = SubResource("CurveTexture_pq6xo")
+turbulence_enabled = true
+turbulence_noise_scale = 3.0
+turbulence_noise_speed_random = 1.0
+turbulence_influence_min = 0.05
+turbulence_influence_max = 0.25
+turbulence_influence_over_life = SubResource("CurveTexture_ifips")
+
+[sub_resource type="SphereMesh" id="SphereMesh_2dru3"]
+material = ExtResource("1_8dx4x")
+
+[sub_resource type="SphereMesh" id="SphereMesh_2immu"]
+material = ExtResource("2_ifips")
+radius = 0.4
+height = 0.8
+
+[sub_resource type="Animation" id="Animation_8dx4x"]
+resource_name = "EnemyExplode"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BloodExplosionParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.75),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmniLight3D:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [16.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OmniLight3D:light_volumetric_fog_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [16.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OmniLight3D:light_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.75783, 0.0177408, 4.81307e-07, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ifips"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [16.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:light_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmniLight3D:light_volumetric_fog_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ifips"]
+_data = {
+&"EnemyExplode": SubResource("Animation_8dx4x"),
+&"RESET": SubResource("Animation_ifips")
+}
 
 [node name="Pivot" type="Node3D"]
 
-[node name="BloodExplosionParticles" parent="." instance=ExtResource("1_8dx4x")]
+[node name="BloodExplosionParticles" type="GPUParticles3D" parent="."]
+amount = 128
+lifetime = 0.75
+interp_to_end = 0.02
 explosiveness = 0.6
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_tchfv")
+draw_passes = 2
+draw_pass_1 = SubResource("SphereMesh_2dru3")
+draw_pass_2 = SubResource("SphereMesh_2immu")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_energy = 16.0
+shadow_enabled = true
+omni_attenuation = 0.5
+
+[node name="ParticleAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ifips")
+}
+autoplay = "EnemyExplode"

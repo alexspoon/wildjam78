@@ -5,14 +5,14 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_4duuq")
-shader_parameter/sphere_color = Color(0, 0, 0, 0)
-shader_parameter/wave_amplitude = 0.01
-shader_parameter/wave_frequency = 20.0
+shader_parameter/sphere_color = Color(0, 0, 0, 0.156863)
+shader_parameter/wave_amplitude = 0.005
+shader_parameter/wave_frequency = 10.0
 shader_parameter/wave_speed = 5.0
 shader_parameter/chroma_amount = 1.0
 shader_parameter/stars_enabled = true
-shader_parameter/star_field_scale = 2.846
-shader_parameter/star_size = 0.002
-shader_parameter/star_intensity = 1.0
+shader_parameter/star_field_scale = 11.769
+shader_parameter/star_size = 0.013
+shader_parameter/star_intensity = 0.341
 shader_parameter/star_axis_speed = 0.051
-shader_parameter/star_move_mode = 2
+shader_parameter/star_move_mode = 1

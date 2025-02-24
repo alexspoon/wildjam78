@@ -207,7 +207,7 @@ public partial class PlayerMoveAndLookComponent : Node
         if (FlashlightToggle)
         {
             PlayerFlashlight.LightEnergy = 16;
-            PlayerFlashlight.LightVolumetricFogEnergy = 8;
+            PlayerFlashlight.LightVolumetricFogEnergy = 4;
         }
         else
         {
@@ -218,7 +218,6 @@ public partial class PlayerMoveAndLookComponent : Node
         if (Input.IsActionJustPressed("inputF"))
         {
             FlashlightToggle = !FlashlightToggle;
-            GD.Print(FlashlightToggle);
         }
     }
 
@@ -229,7 +228,7 @@ public partial class PlayerMoveAndLookComponent : Node
         
         if (Input.IsActionPressed("inputControl"))
         {
-            
+            Crouching = true;
         }
     }
 

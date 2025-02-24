@@ -1,59 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8rjs480t8aqj"]
+[gd_scene load_steps=8 format=3 uid="uid://b8rjs480t8aqj"]
 
 [ext_resource type="Material" uid="uid://cngt4kmuppvxh" path="res://Assets/Materials/ChromaticAbberationShaderMaterial.tres" id="1_cshhr"]
 [ext_resource type="PackedScene" uid="uid://m02v2qa71hd8" path="res://Scenes/EnemyMoveComponent.tscn" id="1_fwg11"]
 [ext_resource type="PackedScene" uid="uid://dvl4evokiclxn" path="res://Scenes/EnemyHealthComponent.tscn" id="1_wacs0"]
-
-[sub_resource type="Animation" id="Animation_wacs0"]
-resource_name = "Float"
-length = 0.5
-loop_mode = 1
-tracks/0/type = "scale_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Collider")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 1.5, 1.5, 1.5, 0.25, 1, 1, 1, 1, 0.5, 1, 1.5, 1.5, 1.5)
-tracks/1/type = "scale_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Mesh")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 1.5, 1.5, 1.5, 0.25, 1, 1, 1, 1, 0.5, 1, 1.5, 1.5, 1.5)
-
-[sub_resource type="Animation" id="Animation_fwg11"]
-length = 0.001
-tracks/0/type = "scale_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Collider")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 1.5, 1.5, 1.5)
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_b5pkw"]
-_data = {
-&"Float": SubResource("Animation_wacs0"),
-&"RESET": SubResource("Animation_fwg11")
-}
+[ext_resource type="Material" uid="uid://bkg668i47uu4t" path="res://Assets/Materials/Cobsonium.tres" id="4_b5pkw"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wacs0"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_fwg11"]
 material = ExtResource("1_cshhr")
 
-[node name="TestEnemy" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+[sub_resource type="SphereMesh" id="SphereMesh_3jkur"]
+material = ExtResource("4_b5pkw")
 
-[node name="EnemyAnimation" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_b5pkw")
-}
-autoplay = "Float"
+[node name="TestEnemy" type="CharacterBody3D"]
 
 [node name="EnemyMoveComponent" parent="." instance=ExtResource("1_fwg11")]
+ChaseSpeed = 1000.0
 
 [node name="EnemyHealthComponent" parent="." instance=ExtResource("1_wacs0")]
 
@@ -61,6 +24,10 @@ autoplay = "Float"
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 shape = SubResource("SphereShape3D_wacs0")
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
+[node name="ChromaticAbberationMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 mesh = SubResource("SphereMesh_fwg11")
+
+[node name="CobsonMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+mesh = SubResource("SphereMesh_3jkur")

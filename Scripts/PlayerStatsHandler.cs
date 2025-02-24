@@ -11,6 +11,7 @@ public partial class PlayerStatsHandler : Node
     private TextureProgressBar StaminaBar;
     private Label SpeedLabel;
     private Label AmmoLabel;
+    private Label FPSLabel;
     private CharacterBody3D Parent;
     private RayCast3D PlayerRay;
     private Control PlayerUI;
@@ -23,6 +24,7 @@ public partial class PlayerStatsHandler : Node
         Parent = GetParent() as CharacterBody3D;
         PlayerMoveComponent = Parent.GetNode<PlayerMoveAndLookComponent>("PlayerMoveAndLookComponent");
         PlayerUI = Parent.GetNode<Control>("PlayerUI");
+        FPSLabel = PlayerUI.GetNode<Label>("FPSLabel");
         HealthBar = PlayerUI.GetNode<TextureProgressBar>("PlayerHealthBar");
         StaminaBar = PlayerUI.GetNode<TextureProgressBar>("PlayerStaminaBar");
         AmmoLabel = PlayerUI.GetNode<Label>("AmmoLabel");
@@ -38,6 +40,7 @@ public partial class PlayerStatsHandler : Node
 
     public override void _Process(double delta)
     {
+        FPSLabel.SetText("FPS: " + Engine.GetFramesPerSecond());
         HandleHealth();
         HandleStamina((float)delta);
         HandleAmmo();

@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8akgg33w0c0d"]
+
+[ext_resource type="Shader" uid="uid://cgkraorjqg7y" path="res://Assets/Shaders/psx_camera_shader.gdshader" id="1_jl2i1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_id6tp"]
+render_priority = -10
+shader = ExtResource("1_jl2i1")
+shader_parameter/enable_fog = false
+shader_parameter/fog_color = Color(0, 0, 0, 1)
+shader_parameter/noise_color = Color(0, 0, 0, 1)
+shader_parameter/fog_distance = 100.0
+shader_parameter/fog_fade_range = 50.0
+shader_parameter/enable_noise = false
+shader_parameter/noise_time_fac = 4.0
+shader_parameter/enable_color_limitation = true
+shader_parameter/color_levels = 48
+shader_parameter/enable_dithering = true
+shader_parameter/dither_strength = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_wnmxb"]
+material = SubResource("ShaderMaterial_id6tp")
+flip_faces = true
+size = Vector2(2, 2)
+
+[node name="PSXShader" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9)
+visible = false
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("QuadMesh_wnmxb")
