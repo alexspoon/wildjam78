@@ -4,6 +4,7 @@ using System;
 public partial class EnemyMoveComponent : Node
 {
     private CharacterBody3D Player;
+    private CustomSignals customSignals;
     private Node3D PlayerHead;
     private CharacterBody3D Parent;
     private Timer ChaseTimer;
@@ -11,17 +12,18 @@ public partial class EnemyMoveComponent : Node
     private Vector3 ChasePoint;
     private Vector3 ChaseDir;
     private Vector3 TargetVelocity;
+    [Export] private float PlayerDamage;
     [Export] private float ChaseSpeed;
 
     public override void _Ready()
     {
         Parent = GetParent() as CharacterBody3D;
+        customSignals = GetNode<CustomSignals>("/root/CustomSignals");
         Player = GetTree().GetRoot().GetNode("Main/PlayerCharacter") as CharacterBody3D;
         PlayerHead = Player.GetNode<Node3D>("Head");
         PlayerChasePath = Player.GetNode<PathFollow3D>("ChasePath/ChasePathFollow");
         ChaseTimer = GetNode<Timer>("ChaseTimer");
         ChaseTimer.Timeout += ChasePointReset;
-
     }
 
     public override void _Process(double delta)
@@ -35,7 +37,8 @@ public partial class EnemyMoveComponent : Node
         {
             ChaseDir = (Player.GlobalPosition - Parent.GlobalPosition).Normalized();
             Parent.LookAt(PlayerHead.GlobalPosition);
-            TargetVelocity = ChaseDir * ChaseSpeed * 0.5f * (float)delta;
+            TargetVelocity.Z = ChaseDir.Z * 10;
+            TargetVelocity = ChaseDir * ChaseSpeed * (float)delta;
         }
         else
         {
@@ -45,14 +48,13 @@ public partial class EnemyMoveComponent : Node
         }
         
         Parent.Velocity = TargetVelocity;
-        
         Parent.MoveAndSlide();
     }
 
     private void ChasePointReset()
     {
         PlayerChasePath.ProgressRatio = GD.Randf();
-        GD.Print(Parent.GlobalPosition.DistanceTo(ChasePoint));
+        //GD.Print(Parent.GlobalPosition.DistanceTo(ChasePoint));
         ChasePoint = PlayerChasePath.GlobalPosition;
     }
 }

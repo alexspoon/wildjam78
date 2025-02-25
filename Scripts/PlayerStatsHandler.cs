@@ -94,7 +94,7 @@ public partial class PlayerStatsHandler : Node
     }
 
     //Handle player damage
-    private void OnPlayerDamage(float damageAmount)
+    public void OnPlayerDamage(float damageAmount)
     {
         CurrentHealth -= damageAmount;
     }

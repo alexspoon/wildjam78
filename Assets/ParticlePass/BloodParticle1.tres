@@ -1,0 +1,6 @@
+[gd_resource type="SphereMesh" load_steps=2 format=3 uid="uid://dg16y17xnslec"]
+
+[ext_resource type="Material" uid="uid://cngt4kmuppvxh" path="res://Assets/Materials/ChromaticAbberationShaderMaterial.tres" id="1_enyup"]
+
+[resource]
+material = ExtResource("1_enyup")

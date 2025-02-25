@@ -1,8 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://6p0gptqf1lg6"]
+[gd_scene load_steps=28 format=3 uid="uid://6p0gptqf1lg6"]
 
 [ext_resource type="PackedScene" uid="uid://deultft1rbp2m" path="res://Scenes/PlayerMoveAndLookComponent.tscn" id="1_5gnj7"]
 [ext_resource type="Texture2D" uid="uid://vlq68klepn6p" path="res://Assets/Textures/crosshair006.png" id="1_r4x55"]
+[ext_resource type="Script" uid="uid://4etadwxyjqw3" path="res://Scripts/PlayerCharacter.cs" id="1_uvrlg"]
 [ext_resource type="Texture2D" uid="uid://bqo8cuswwljp5" path="res://Assets/Textures/pcb_1.png" id="1_v7sut"]
+[ext_resource type="PackedScene" uid="uid://b8rjs480t8aqj" path="res://Scenes/TestEnemy.tscn" id="2_fkgr2"]
 [ext_resource type="Texture2D" uid="uid://c4vtvrwf3ag5u" path="res://Assets/Textures/HPBar/Border_Style_1.png" id="2_wnmxb"]
 [ext_resource type="Texture2D" uid="uid://c4awwt6r66n18" path="res://Assets/Textures/HPBar/Style_3.png" id="3_k5f8r"]
 [ext_resource type="FontFile" uid="uid://dwfwp4aey1pca" path="res://Assets/Fonts/yoster.ttf" id="4_cl0yw"]
@@ -70,6 +72,22 @@ size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_5gnj7"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_vjvuw"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vjvuw"]
+albedo_color = Color(0.852368, 0, 0.151285, 1)
+metallic = 0.3
+metallic_specular = 1.0
+roughness = 0.0
+emission_enabled = true
+emission = Color(1, 0.0405029, 0.0223527, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_uvrlg"]
+material = SubResource("StandardMaterial3D_vjvuw")
+radius = 0.1
+height = 0.2
+
 [sub_resource type="Curve3D" id="Curve3D_vjvuw"]
 closed = true
 _data = {
@@ -80,6 +98,8 @@ point_count = 8
 
 [node name="PlayerCharacter" type="CharacterBody3D"]
 physics_interpolation_mode = 1
+script = ExtResource("1_uvrlg")
+TestEnemy = ExtResource("2_fkgr2")
 
 [node name="PlayerUI" type="Control" parent="."]
 layout_mode = 3
@@ -249,7 +269,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_mdaju")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 
 [node name="HandPoint" type="Node3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.6, -0.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.68258, -0.437627, -0.8)
 
 [node name="DebugPoint" type="MeshInstance3D" parent="Head/HandPoint"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.2, 0, -0.2)
@@ -278,6 +298,16 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 visible = false
 mesh = SubResource("SphereMesh_5gnj7")
 surface_material_override/0 = ExtResource("4_mdaju")
+
+[node name="AimSpringArm" type="SpringArm3D" parent="Head"]
+shape = SubResource("BoxShape3D_vjvuw")
+spring_length = -21.0
+
+[node name="AimPosition" type="Marker3D" parent="Head/AimSpringArm"]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Head/AimSpringArm/AimPosition"]
+visible = false
+mesh = SubResource("SphereMesh_uvrlg")
 
 [node name="GrabRaycast" type="RayCast3D" parent="Head"]
 target_position = Vector3(0, 0, -2.5)

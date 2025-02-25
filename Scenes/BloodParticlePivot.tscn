@@ -1,7 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://nci5ljs65od5"]
+[gd_scene load_steps=12 format=3 uid="uid://nci5ljs65od5"]
 
-[ext_resource type="Material" uid="uid://cngt4kmuppvxh" path="res://Assets/Materials/ChromaticAbberationShaderMaterial.tres" id="1_8dx4x"]
-[ext_resource type="Material" uid="uid://bkg668i47uu4t" path="res://Assets/Materials/Cobsonium.tres" id="2_ifips"]
+[ext_resource type="SphereMesh" uid="uid://0vx5cgfe2s8u" path="res://Assets/ParticlePass/BloodParticle2.tres" id="2_2immu"]
 
 [sub_resource type="Curve" id="Curve_tchfv"]
 _data = [Vector2(0.0121951, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), -3.60886, -3.60886, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -30,6 +29,9 @@ spread = 180.0
 flatness = 0.5
 initial_velocity_min = 15.0
 initial_velocity_max = 15.0
+gravity = Vector3(0, 0, 0)
+tangential_accel_min = 25.0
+tangential_accel_max = 30.0
 scale_min = 0.25
 scale_max = 0.25
 scale_curve = SubResource("CurveTexture_hq5yb")
@@ -40,14 +42,9 @@ turbulence_noise_speed_random = 1.0
 turbulence_influence_min = 0.05
 turbulence_influence_max = 0.25
 turbulence_influence_over_life = SubResource("CurveTexture_ifips")
-
-[sub_resource type="SphereMesh" id="SphereMesh_2dru3"]
-material = ExtResource("1_8dx4x")
-
-[sub_resource type="SphereMesh" id="SphereMesh_2immu"]
-material = ExtResource("2_ifips")
-radius = 0.4
-height = 0.8
+collision_mode = 1
+collision_friction = 0.1
+collision_bounce = 0.2
 
 [sub_resource type="Animation" id="Animation_8dx4x"]
 resource_name = "EnemyExplode"
@@ -163,17 +160,13 @@ _data = {
 [node name="Pivot" type="Node3D"]
 
 [node name="BloodExplosionParticles" type="GPUParticles3D" parent="."]
-emitting = false
 amount = 128
 lifetime = 0.75
 interp_to_end = 0.02
-one_shot = true
 explosiveness = 0.6
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_tchfv")
-draw_passes = 2
-draw_pass_1 = SubResource("SphereMesh_2dru3")
-draw_pass_2 = SubResource("SphereMesh_2immu")
+draw_pass_1 = ExtResource("2_2immu")
 
 [node name="KillFlash" type="OmniLight3D" parent="."]
 light_energy = 16.0

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5ub4oq4y2sda"]
+
+[ext_resource type="Script" uid="uid://dklmgnn44s02g" path="res://Scripts/EnemyDamageComponent.cs" id="1_p3s0k"]
+
+[node name="EnemyDamageComponent" type="Node"]
+script = ExtResource("1_p3s0k")
+
+[node name="DamageCooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

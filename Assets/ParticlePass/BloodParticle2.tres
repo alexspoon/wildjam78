@@ -1,0 +1,12 @@
+[gd_resource type="SphereMesh" load_steps=2 format=3 uid="uid://0vx5cgfe2s8u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8dx4x"]
+albedo_color = Color(0.750854, 0.0187347, 3.85046e-07, 1)
+roughness = 0.0
+
+[resource]
+material = SubResource("StandardMaterial3D_8dx4x")
+radius = 0.45
+height = 0.9
+radial_segments = 6
+rings = 2

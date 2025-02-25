@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://nr5hkj10xwti"]
+[gd_scene load_steps=32 format=3 uid="uid://nr5hkj10xwti"]
 
 [ext_resource type="PackedScene" uid="uid://c8yd5bqnybgp0" path="res://Assets/Models/ShopPOI/tunnel_straight.glb" id="1_7vp21"]
 [ext_resource type="PackedScene" uid="uid://d4mcg526cgqsf" path="res://Assets/Models/ShopPOI/bunker_entrance_1.glb" id="2_x8j67"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://mn6448nl85oc" path="res://Assets/Models/ShopPOI/ceiling_lamp_2_off.glb" id="9_tpkb8"]
 [ext_resource type="Texture2D" uid="uid://tkfnuvk0xbs" path="res://Assets/Models/ShopPOI/ceiling_lamp_2_on_ceiling_lamp_1_on.png" id="10_7k4tp"]
 [ext_resource type="Texture2D" uid="uid://b54assk61h4bx" path="res://Assets/Models/ShopPOI/ceiling_lamp_2_on_ceiling_lamp_1_on_emission.png" id="11_407vb"]
-[ext_resource type="PackedScene" uid="uid://bpr4y4ksrwx4m" path="res://Assets/Models/ShopPOI/metal_shelf_2.glb" id="12_407vb"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7k4tp"]
 data = PackedVector3Array(-1.7184, -3, -0.6785, -1.75, 3, -1, -1.75, -3, -1, -1.7164, 3, -1.3414, -1.75, -3, -1, -1.75, 3, -1, -1.7184, -3, -0.6785, -1.7184, 3, -0.6785, -1.75, 3, -1, -1.7118, 3, -0.6618, -1.7184, 3, -0.6785, -1.7184, -3, -0.6785, -1.7118, 3, -0.6618, -1.7184, -3, -0.6785, -1.7118, -3, -0.6618, -1.7164, 3, -1.3414, -1.7164, -3, -1.3414, -1.75, -3, -1, -1.6168, 3, -1.6697, -1.7164, -3, -1.3414, -1.7164, 3, -1.3414, -1.6168, 3, -1.6697, -1.6168, -3, -1.6697, -1.7164, -3, -1.3414, -1.4551, 3, -1.9723, -1.6168, -3, -1.6697, -1.6168, 3, -1.6697, -1.4551, 3, -1.9723, -1.4551, -3, -1.9723, -1.6168, -3, -1.6697, -1.2375, 3, -2.2375, -1.4551, -3, -1.9723, -1.4551, 3, -1.9723, -1.2375, 3, -2.2375, -1.2375, -3, -2.2375, -1.4551, -3, -1.9723, -0.6697, 3, -2.6168, -0.9723, -3, -2.4551, -0.9723, 3, -2.4551, -0.9723, 3, -2.4551, -0.9723, -3, -2.4551, -1.2375, -3, -2.2375, -0.9723, 3, -2.4551, -1.2375, -3, -2.2375, -1.2375, 3, -2.2375, -0.6697, 3, -2.6168, -0.6697, -3, -2.6168, -0.9723, -3, -2.4551, -0.1668, -3, -2.7164, -0.6697, -3, -2.6168, -0.6697, 3, -2.6168, -0.1668, -3, -2.7164, -0.6697, 3, -2.6168, -0.1668, 3, -2.7164, 0.1668, 3, -2.7164, -0.1668, -3, -2.7164, -0.1668, 3, -2.7164, 0.1668, 3, -2.7164, 0.1668, -3, -2.7164, -0.1668, -3, -2.7164, 0.1668, 3, -2.7164, 0.6697, -3, -2.6168, 0.1668, -3, -2.7164, 0.1668, 3, -2.7164, 0.6697, 3, -2.6168, 0.6697, -3, -2.6168, 0.6697, -3, -2.6168, 0.6697, 3, -2.6168, 0.9722, 3, -2.4551, 0.6697, -3, -2.6168, 0.9722, 3, -2.4551, 0.9722, -3, -2.4551, 0.9722, -3, -2.4551, 0.9722, 3, -2.4551, 1.2374, 3, -2.2375, 0.9722, -3, -2.4551, 1.2374, 3, -2.2375, 1.2374, -3, -2.2375, 1.7183, 3, -0.6785, 1.75, -3, -1, 1.75, 3, -1, 1.7164, -3, -1.3414, 1.75, 3, -1, 1.75, -3, -1, 1.7183, 3, -0.6785, 1.7183, -3, -0.6785, 1.75, -3, -1, 1.7117, -3, -0.6618, 1.7183, -3, -0.6785, 1.7183, 3, -0.6785, 1.7117, -3, -0.6618, 1.7183, 3, -0.6785, 1.7117, 3, -0.6618, 1.7164, -3, -1.3414, 1.7164, 3, -1.3414, 1.75, 3, -1, 1.6168, -3, -1.6697, 1.7164, 3, -1.3414, 1.7164, -3, -1.3414, 1.6168, -3, -1.6697, 1.6168, 3, -1.6697, 1.7164, 3, -1.3414, 1.455, -3, -1.9723, 1.6168, 3, -1.6697, 1.6168, -3, -1.6697, 1.455, -3, -1.9723, 1.455, 3, -1.9723, 1.6168, 3, -1.6697, 1.2374, -3, -2.2375, 1.455, 3, -1.9723, 1.455, -3, -1.9723, 1.2374, -3, -2.2375, 1.2374, 3, -2.2375, 1.455, 3, -1.9723, 1.44, 3, 0, -1.44, -3, 0, 1.44, -3, 0, 1.44, 3, 0, -1.44, 3, 0, -1.44, -3, 0, -1.4646, -3, -0.0195, -1.5955, 3, -0.5805, -1.5955, -3, -0.5805, -1.5955, 3, -0.5805, -1.6039, -3, -0.5969, -1.5955, -3, -0.5805, -1.5955, 3, -0.5805, -1.6039, 3, -0.5969, -1.6039, -3, -0.5969, -1.4646, -3, -0.0195, -1.4646, 3, -0.0195, -1.5955, 3, -0.5805, -1.4555, 3, -0.0057, -1.4646, 3, -0.0195, -1.4646, -3, -0.0195, -1.4555, 3, -0.0057, -1.4646, -3, -0.0195, -1.4555, -3, -0.0057, 1.6178, 3, -0.609, 1.6985, -3, -0.6496, 1.6985, 3, -0.6496, 1.6985, -3, -0.6496, 1.7117, 3, -0.6618, 1.6985, 3, -0.6496, 1.6985, -3, -0.6496, 1.7117, -3, -0.6618, 1.7117, 3, -0.6618, 1.6178, 3, -0.609, 1.6178, -3, -0.609, 1.6985, -3, -0.6496, 1.6039, -3, -0.5969, 1.6178, -3, -0.609, 1.6178, 3, -0.609, 1.6039, -3, -0.5969, 1.6178, 3, -0.609, 1.6039, 3, -0.5969, 1.4645, 3, -0.0195, 1.5954, -3, -0.5805, 1.5954, 3, -0.5805, 1.5954, -3, -0.5805, 1.6039, 3, -0.5969, 1.5954, 3, -0.5805, 1.5954, -3, -0.5805, 1.6039, -3, -0.5969, 1.6039, 3, -0.5969, 1.4645, 3, -0.0195, 1.4645, -3, -0.0195, 1.5954, -3, -0.5805, 1.4554, -3, -0.0057, 1.4645, -3, -0.0195, 1.4645, 3, -0.0195, 1.4554, -3, -0.0057, 1.4645, 3, -0.0195, 1.4554, 3, -0.0057, -1.6039, 3, -0.5969, -1.6179, -3, -0.609, -1.6039, -3, -0.5969, -1.6039, 3, -0.5969, -1.6179, 3, -0.609, -1.6179, -3, -0.609, -1.6179, -3, -0.609, -1.6179, 3, -0.609, -1.6986, 3, -0.6496, -1.6179, -3, -0.609, -1.6986, 3, -0.6496, -1.6986, -3, -0.6496, -1.6986, 3, -0.6496, -1.7117, -3, -0.6618, -1.6986, -3, -0.6496, -1.6986, 3, -0.6496, -1.7117, 3, -0.6618, -1.7117, -3, -0.6618, -1.44, 3, 0, -1.4555, -3, -0.0057, -1.44, -3, 0, -1.44, 3, 0, -1.4555, 3, -0.0057, -1.4555, -3, -0.0057, 1.44, -3, 0, 1.4554, 3, -0.0057, 1.44, 3, 0, 1.44, -3, 0, 1.4554, -3, -0.0057, 1.4554, 3, -0.0057)
@@ -57,6 +56,7 @@ size = Vector3(32, 0.01, 32)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yposo"]
 albedo_texture = ExtResource("7_ju5da")
+metallic = 0.5
 roughness = 0.8
 uv1_scale = Vector3(16, 16, 16)
 
@@ -83,129 +83,128 @@ emission_texture = ExtResource("11_407vb")
 points = PackedVector3Array(-0.22, -0.405058, 0.0499925, -0.213669, -0.405058, 0.0363355, -0.193039, -0.487821, 4.28408e-07, -0.22, -0.405058, 0.139984, -0.22, 0.404966, 0.0499925, -0.213669, 0.404966, 0.0363355, -0.17775, -0.503091, 4.28408e-07, -0.192953, -0.487719, 0.0452783, -0.193039, 0.487628, 4.28408e-07, -0.213669, -0.405058, 0.153657, -0.22, 0.404966, 0.139984, 0.177697, -0.503091, 4.28408e-07, -0.00504391, -0.51999, 0.0499925, -0.00504391, -0.51999, 0.139984, -0.177663, -0.502989, 0.0452783, -0.192953, 0.487628, 0.0452783, -0.17775, 0.502999, 4.28408e-07, -0.00504391, -0.513678, 0.153657, -0.200016, -0.405058, 0.159984, -0.213669, 0.404966, 0.153657, 0.177611, -0.502989, 0.0452783, 0.00499111, -0.51999, 0.139984, 0.00499111, -0.51999, 0.0499925, 0.192986, -0.487821, 4.28408e-07, 0.192943, -0.487719, 0.0452783, -0.177663, 0.502898, 0.0452783, -0.00504391, 0.52, 0.139984, -0.00504391, 0.519898, 0.0499925, 0.177697, 0.502999, 4.28408e-07, 0.00499111, -0.513678, 0.153657, -0.00504391, -0.500037, 0.16, -0.200016, 0.404966, 0.159984, -0.00504391, 0.513587, 0.153657, 0.213616, -0.405058, 0.153657, 0.213616, -0.405058, 0.0363355, 0.219947, -0.405058, 0.0499925, 0.21999, -0.405058, 0.139984, 0.192986, 0.487628, 4.28408e-07, 0.00499111, 0.52, 0.139984, 0.00499111, 0.519898, 0.0499925, 0.177611, 0.502898, 0.0452783, 0.192943, 0.487628, 0.0452783, 0.00499111, -0.500037, 0.16, 0.199963, -0.405058, 0.16, 0.199963, -0.395081, 0.16, -0.00504391, 0.499946, 0.159984, 0.00499111, 0.513587, 0.153657, 0.213616, 0.404966, 0.153657, 0.213616, 0.404966, 0.0363355, 0.219947, 0.404966, 0.0499925, 0.21999, 0.404966, 0.139984, 0.199963, 0.404966, 0.159984, 0.00499111, 0.499946, 0.159984)
 
 [sub_resource type="FogMaterial" id="FogMaterial_6qode"]
-density = -0.5
+density = -0.2
 emission = Color(1, 1, 1, 1)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tpkb8"]
-points = PackedVector3Array(-1.7001, -0.490067, -2.4, -1.71015, -0.48827, -2.17612, -1.71015, -0.486872, -2.17987, -1.71015, -0.484175, -2.18316, -1.71015, -0.47998, -2.18387, -1.7001, 0.489966, -2.4, -1.69742, -0.497158, -2.4, -1.71015, -0.48827, -0.276037, -1.70814, -0.490866, -2.17612, -1.71015, 0.479879, -2.18387, -1.71015, 0.483974, -2.18316, -1.71015, 0.48677, -2.17987, -1.71015, 0.488168, -2.17612, -1.69742, 0.497057, -2.4, -1.69006, -0.500055, -2.4, -1.69742, -0.497158, 0, -1.71015, -0.486872, -0.272044, -1.70814, -0.490866, -0.276037, -1.7001, -0.490067, 0, -1.71015, 0.488168, -0.276037, -1.70814, 0.490765, -2.17612, -1.69742, 0.497057, 0, -1.69006, 0.499953, -2.4, -1.65022, -0.510141, -2.18387, -1.65423, -0.510141, -2.18316, -1.65691, -0.510141, -2.17987, -1.65859, -0.510141, -2.17588, -1.69006, -0.500055, 0, 1.68971, -0.500055, -2.4, -1.71015, -0.484175, -0.26899, -1.7001, 0.489966, 0, -1.71015, -0.48008, -0.26805, -1.71015, 0.48677, -0.272044, -1.70814, 0.490765, -0.276037, -1.69006, 0.499953, 0, -1.65859, 0.51014, -2.17588, -1.65691, 0.51014, -2.17987, -1.65423, 0.51014, -2.18316, -1.65022, 0.51014, -2.18387, 1.68971, 0.499953, -2.4, 1.64987, -0.510141, -2.18387, -1.65859, -0.510141, -0.276037, -1.65691, -0.510141, -0.272044, -1.65423, -0.510141, -0.26899, -1.65022, -0.510141, -0.26805, 1.68971, -0.500055, 0, 1.69675, -0.497158, -2.4, 1.65791, -0.510141, -2.17588, 1.65657, -0.510141, -2.17987, 1.65389, -0.510141, -2.18316, -1.71015, 0.484073, -0.26899, -1.71015, 0.479879, -0.26805, -1.65022, 0.51004, -0.26805, -1.65423, 0.51004, -0.26899, -1.65691, 0.51004, -0.272044, -1.65859, 0.51004, -0.276037, 1.68971, 0.499953, 0, -1.65691, 0.51014, -2.17212, -1.6462, 0.51014, -2.18316, 1.64987, 0.51004, -2.18387, 1.65389, 0.51004, -2.18316, 1.65657, 0.51004, -2.17987, 1.65791, 0.51004, -2.17588, 1.69675, 0.497057, -2.4, 1.64987, -0.510141, -0.26805, 1.65389, -0.510141, -0.26899, 1.65657, -0.510141, -0.272044, 1.65791, -0.510141, -0.276037, 1.69675, -0.497158, 0, 1.69976, -0.490067, -2.4, 1.7098, -0.48827, -2.17612, 1.70779, -0.490866, -2.17612, -1.65022, 0.51014, -2.16813, -1.65423, 0.51014, -2.16883, 1.64987, 0.51004, -0.26805, 1.69675, 0.497057, 0, 1.65791, 0.51004, -0.276037, 1.65657, 0.51004, -0.272044, 1.65389, 0.51004, -0.26899, -1.64352, 0.51014, -2.17987, -1.64185, 0.51014, -2.17612, 1.70779, 0.490765, -2.17612, 1.71014, 0.488168, -2.17612, 1.69976, 0.489966, -2.4, 1.70779, -0.490866, -0.276037, 1.7098, -0.48827, -0.276037, 1.69976, -0.490067, 0, 1.71014, 0.419856, -2.18387, 1.7098, -0.47998, -2.18387, 1.7098, -0.484175, -2.18316, 1.7098, -0.486872, -2.17987, 1.71014, 0.413065, -2.17987, 1.71014, 0.411667, -2.17588, -1.6462, 0.51014, -2.16883, 1.69976, 0.489966, 0, 1.7098, 0.488168, -0.276037, 1.70779, 0.490765, -0.276037, -1.64319, 0.51014, -2.17212, 1.71014, 0.48677, -2.17212, 1.71014, 0.48677, -2.17987, 1.71014, 0.483974, -2.18316, 1.71014, 0.479879, -2.18387, 1.7098, -0.486872, -0.272044, 1.7098, -0.484175, -0.26899, 1.7098, -0.48008, -0.26805, 1.71014, 0.415762, -2.18316, 1.71014, 0.413065, -2.17212, 1.7098, 0.479879, -0.26805, 1.7098, 0.484073, -0.26899, 1.7098, 0.48677, -0.272044, 1.71014, 0.484073, -2.16883, 1.71014, 0.415762, -2.16883, 1.71014, 0.419956, -2.16813, 1.71014, 0.479879, -2.16813)
 
 [node name="ShopPOI" type="Node3D"]
 
-[node name="tunnel_straight2" parent="." instance=ExtResource("1_7vp21")]
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="EntranceTunnel" parent="Geometry" instance=ExtResource("1_7vp21")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="tunnel_straight2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/EntranceTunnel"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_7k4tp")
 
-[node name="bunker_entrance_12" parent="." instance=ExtResource("2_x8j67")]
+[node name="BunkerEntrance" parent="Geometry" instance=ExtResource("2_x8j67")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="bunker_entrance_12"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/BunkerEntrance"]
 transform = Transform3D(1, 0, 0, 0, -3.57628e-07, -1, 0, 1, -3.57628e-07, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_407vb")
 
-[node name="beam_72" parent="." instance=ExtResource("3_bwv4c")]
+[node name="EntranceBeam" parent="Geometry" instance=ExtResource("3_bwv4c")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 3.4, 0.9)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="beam_72"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/EntranceBeam"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_6qode")
 
-[node name="wall_1_plain4" parent="." instance=ExtResource("4_v0ky3")]
+[node name="WallMidLeft" parent="Geometry" instance=ExtResource("4_v0ky3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -12)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall_1_plain4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/WallMidLeft"]
 transform = Transform3D(1, 0, 0, 0, -3.57628e-07, -1, 0, 1, -3.57628e-07, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_6qode")
 
-[node name="wall_1_plain5" parent="." instance=ExtResource("4_v0ky3")]
+[node name="WallMidRight" parent="Geometry" instance=ExtResource("4_v0ky3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, -12)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall_1_plain5"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/WallMidRight"]
 transform = Transform3D(1, 0, 0, 0, -3.57628e-07, -1, 0, 1, -3.57628e-07, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_tpkb8")
 
-[node name="wall_1_plain6" parent="." instance=ExtResource("4_v0ky3")]
+[node name="WallMidBack" parent="Geometry" instance=ExtResource("4_v0ky3")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5.73695e-07, 0, -18)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall_1_plain6"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/WallMidBack"]
 transform = Transform3D(1, 0, 0, 0, -3.57628e-07, -1, 0, 1, -3.57628e-07, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_yposo")
 
-[node name="wall_1_round2" parent="." instance=ExtResource("5_ju5da")]
+[node name="WallFrontRight" parent="Geometry" instance=ExtResource("5_ju5da")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, -6)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall_1_round2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/WallFrontRight"]
 transform = Transform3D(0, -1, 1.78814e-07, 5.96046e-08, -2.38419e-07, -1, 1, 5.96046e-08, 0, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_rwwae")
 
-[node name="wall_1_round5" parent="." instance=ExtResource("5_ju5da")]
+[node name="WallBackRight" parent="Geometry" instance=ExtResource("5_ju5da")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -18)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall_1_round5"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/WallBackRight"]
 transform = Transform3D(0, -1, 1.78814e-07, 5.96046e-08, -2.38419e-07, -1, 1, 5.96046e-08, 0, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_87bdc")
 
-[node name="wall_1_round3" parent="." instance=ExtResource("5_ju5da")]
+[node name="WallFrontLeft" parent="Geometry" instance=ExtResource("5_ju5da")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6, 0, -6)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall_1_round3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/WallFrontLeft"]
 transform = Transform3D(0, -1, 1.78814e-07, 5.96046e-08, -2.38419e-07, -1, 1, 5.96046e-08, 0, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_td4s6")
 
-[node name="wall_1_round4" parent="." instance=ExtResource("5_ju5da")]
+[node name="WallBackLeft" parent="Geometry" instance=ExtResource("5_ju5da")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -6, 0, -18)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall_1_round4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/WallBackLeft"]
 transform = Transform3D(0, -1, 1.78814e-07, 5.96046e-08, -2.38419e-07, -1, 1, 5.96046e-08, 0, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_pixrk")
 
-[node name="tunnel_hole_22" parent="." instance=ExtResource("6_7k4tp")]
+[node name="RoomEntryway" parent="Geometry" instance=ExtResource("6_7k4tp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="tunnel_hole_22"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/RoomEntryway"]
 transform = Transform3D(1, 0, 0, 0, -3.57628e-07, -1, 0, 1, -3.57628e-07, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_aydq7")
 
-[node name="Floor" type="CSGMesh3D" parent="."]
+[node name="Floor" type="CSGMesh3D" parent="Geometry"]
 transform = Transform3D(0.38394, 0, 0, 0, 1, 0, 0, 0, 0.383386, 0, -0.00496108, -12.1326)
 use_collision = true
 mesh = SubResource("BoxMesh_rwwae")
 
-[node name="Ceiling" type="CSGMesh3D" parent="."]
+[node name="Ceiling" type="CSGMesh3D" parent="Geometry"]
 transform = Transform3D(0.38394, 0, 0, 0, 1, 0, 0, 0, 0.383386, 0, 2.99382, -12.1326)
 use_collision = true
 mesh = SubResource("BoxMesh_ju5da")
 
-[node name="ceiling_lamp_2_off2" parent="." instance=ExtResource("9_tpkb8")]
+[node name="EntranceLampLeft" parent="Geometry" instance=ExtResource("9_tpkb8")]
 transform = Transform3D(-2.98023e-08, -4.37114e-08, 1, -1, 0, -2.98023e-08, 0, -1, -4.37114e-08, -1.4, 2.7, 0.0582503)
 
-[node name="ceiling_lamp_2_off" parent="ceiling_lamp_2_off2" index="0"]
+[node name="ceiling_lamp_2_off" parent="Geometry/EntranceLampLeft" index="0"]
 surface_material_override/2 = SubResource("StandardMaterial3D_6qode")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ceiling_lamp_2_off2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/EntranceLampLeft"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_fpvff")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="ceiling_lamp_2_off2"]
+[node name="SpotLight3D" type="SpotLight3D" parent="Geometry/EntranceLampLeft"]
 transform = Transform3D(0.965926, 5.2429e-08, -0.258819, 0.258819, -4.07325e-08, 0.965926, 4.01002e-08, -1, -5.29142e-08, 0, -0.0719809, 0)
 light_color = Color(1, 1, 0.737255, 1)
 light_energy = 8.0
 shadow_enabled = true
 spot_range = 10.0
 
-[node name="ceiling_lamp_2_off3" parent="." instance=ExtResource("9_tpkb8")]
+[node name="EntranceLampRight" parent="Geometry" instance=ExtResource("9_tpkb8")]
 transform = Transform3D(-2.98023e-08, -4.37114e-08, 1, -1, 0, -2.98023e-08, 0, -1, -4.37114e-08, 1.4, 2.7, 0.3)
 
-[node name="ceiling_lamp_2_off" parent="ceiling_lamp_2_off3" index="0"]
+[node name="ceiling_lamp_2_off" parent="Geometry/EntranceLampRight" index="0"]
 transform = Transform3D(1, -5.69428e-23, 0, 0, 0, -1, 0, 1, 0, 0, 0.240171, 0)
 surface_material_override/2 = SubResource("StandardMaterial3D_tpkb8")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ceiling_lamp_2_off3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/EntranceLampRight"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_wc532")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="ceiling_lamp_2_off3"]
+[node name="SpotLight3D" type="SpotLight3D" parent="Geometry/EntranceLampRight"]
 transform = Transform3D(0.965926, 5.2429e-08, -0.258819, 0.258819, -4.07325e-08, 0.965926, 4.01002e-08, -1, -5.29142e-08, 0, 0.160099, 0)
 light_color = Color(1, 1, 0.737255, 1)
 light_energy = 8.0
@@ -213,29 +212,23 @@ light_indirect_energy = 4.0
 shadow_enabled = true
 spot_range = 10.0
 
-[node name="FogVolume" type="FogVolume" parent="."]
+[node name="Interior" type="Node3D" parent="."]
+
+[node name="FogDisabler" type="FogVolume" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -9.5)
 size = Vector3(14, 4, 19)
 material = SubResource("FogMaterial_6qode")
 
-[node name="metal_shelf_2" parent="." instance=ExtResource("12_407vb")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.3829, 3.88622e-05, -9.98979)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="metal_shelf_2"]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_tpkb8")
-
-[editable path="tunnel_straight2"]
-[editable path="bunker_entrance_12"]
-[editable path="beam_72"]
-[editable path="wall_1_plain4"]
-[editable path="wall_1_plain5"]
-[editable path="wall_1_plain6"]
-[editable path="wall_1_round2"]
-[editable path="wall_1_round5"]
-[editable path="wall_1_round3"]
-[editable path="wall_1_round4"]
-[editable path="tunnel_hole_22"]
-[editable path="ceiling_lamp_2_off2"]
-[editable path="ceiling_lamp_2_off3"]
-[editable path="metal_shelf_2"]
+[editable path="Geometry/EntranceTunnel"]
+[editable path="Geometry/BunkerEntrance"]
+[editable path="Geometry/EntranceBeam"]
+[editable path="Geometry/WallMidLeft"]
+[editable path="Geometry/WallMidRight"]
+[editable path="Geometry/WallMidBack"]
+[editable path="Geometry/WallFrontRight"]
+[editable path="Geometry/WallBackRight"]
+[editable path="Geometry/WallFrontLeft"]
+[editable path="Geometry/WallBackLeft"]
+[editable path="Geometry/RoomEntryway"]
+[editable path="Geometry/EntranceLampLeft"]
+[editable path="Geometry/EntranceLampRight"]
